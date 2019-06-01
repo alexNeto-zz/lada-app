@@ -14,13 +14,7 @@ import { TitleComponent } from './header/title/title.component';
 import { MainComponent } from './main/main.component';
 import { WeatherResumeItemComponent } from './main/weather-resume-item/weather-resume-item.component';
 import { WeatherResumeListComponent } from './main/weather-resume-list/weather-resume-list.component';
-
-
-
-
-
-
-
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -39,9 +33,7 @@ import { WeatherResumeListComponent } from './main/weather-resume-list/weather-r
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatInputModule,
-    MatButtonModule,
-    MatListModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
