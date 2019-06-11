@@ -8,8 +8,10 @@ import { LocationFound } from './location-found';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+
   protected placeholder: string;
   protected address: string;
+  private timeout;
 
   @Output()
   locationFound?: LocationFound;
@@ -23,12 +25,19 @@ export class SearchComponent implements OnInit {
   }
 
   showLocations(searchLocation) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => this.makeRequestToLocation(searchLocation), 250);
+  }
+
+  makeRequestToLocation(searchLocation): void {
     this.location.findLocation(searchLocation)
       .subscribe((data: LocationFound) => {
         this.locationFound = data;
         this.updateAddress();
-      });
+      })
+  }
 
+  search() {
   }
 
   updateAddress() {

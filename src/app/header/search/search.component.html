@@ -1,7 +1,7 @@
 <div id=search-component>
   <input type="text" name="search" id="search" placeholder="{{ placeholder }}"
-    (input)="showLocations(seachLocation.value)" (waiting)="showLocations(seachLocation.value)" #seachLocation>
-  <button id="search-button" mat-raised-button>Pesquisar</button>
+    (input)="showLocations(seachLocation.value)" #seachLocation>
+  <button id="search-button" mat-raised-button (click)="search()">Pesquisar</button>
 </div>
 
 <div id="response">
