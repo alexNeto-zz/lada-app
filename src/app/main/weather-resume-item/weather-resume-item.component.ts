@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Font } from '../font.model';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Source } from './source.model';
 
 @Component({
   selector: 'app-weather-resume-item',
@@ -7,13 +7,18 @@ import { Font } from '../font.model';
   styleUrls: ['./weather-resume-item.component.scss']
 })
 export class WeatherResumeItemComponent implements OnInit {
+  @HostBinding('attr.class') cssClass = 'row';
+  @Input() source: Source;
 
-  @Input() font: Font;
-  constructor() {
+  constructor() { }
 
+  voteUp(): boolean {
+    this.source.voteUp();
+    return false;
   }
-
-  ngOnInit() {
+  voteDown(): boolean {
+    this.source.voteDown();
+    return false;
   }
-
+  ngOnInit() { }
 }

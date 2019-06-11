@@ -1,4 +1,9 @@
-<mat-form-field>
-  <input matInput placeholder="Input">
-</mat-form-field>
-<button mat-raised-button>Basic</button>
+<div id=search-component>
+  <input type="text" name="search" id="search" placeholder="{{ placeholder }}"
+    (input)="showLocations(seachLocation.value)" (waiting)="showLocations(seachLocation.value)" #seachLocation>
+  <button id="search-button" mat-raised-button>Pesquisar</button>
+</div>
+
+<div id="response">
+  <span>{{ address }}</span>
+</div>

@@ -1,12 +1,19 @@
-import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 const materialModules = [
   MatInputModule,
+  MatCardModule,
   MatButtonModule,
-  MatListModule
+  MatListModule,
+  MatToolbarModule,
+  MatAutocompleteModule
 ];
 
 

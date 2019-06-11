@@ -1,3 +1,17 @@
-<p>
-  weather-resume-item works!
-</p>
+<mat-card id="weather-resume-item" class="mat-elevation-z6">
+  <mat-card-header>
+    <mat-card-title>
+      <!-- <a href="{{ source.link }}"> {{ source.title }} </a> -->
+      aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </mat-card-title>
+    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+  </mat-card-header>
+  <mat-card-content>
+    ({{ source.domain() }})
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="voteUp()">LIKE</button>
+    <span> {{ source.votes }} </span>
+    <button mat-button (click)="voteDown()">DISLIKE</button>
+  </mat-card-actions>
+</mat-card>

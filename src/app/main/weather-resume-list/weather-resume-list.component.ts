@@ -1,5 +1,6 @@
+import { DayResume } from './../weather-resume-item/day-resume';
 import { Component, OnInit } from '@angular/core';
-import { Font } from '../font.model';
+import { Source } from '../weather-resume-item/source.model';
 
 @Component({
   selector: 'app-weather-resume-list',
@@ -7,13 +8,43 @@ import { Font } from '../font.model';
   styleUrls: ['./weather-resume-list.component.scss']
 })
 export class WeatherResumeListComponent implements OnInit {
+  sources: Source[];
+  private dayResume: DayResume;
 
-  fonts: Font[]
   constructor() {
-    this.fonts = [new Font().get()]
+    this.sources = [
+      new Source({
+        weatherCondition: "string",
+        maximumTemperature: "string",
+        minimumTemperature: "string",
+        rainProbability: "string",
+        source: "string",
+        sourceLogo: "string",
+        link: "string"
+      }, 3),
+      new Source({
+        weatherCondition: "string",
+        maximumTemperature: "string",
+        minimumTemperature: "string",
+        rainProbability: "string",
+        source: "string",
+        sourceLogo: "string",
+        link: "string"
+      }, 2),
+      new Source({
+        weatherCondition: "string",
+        maximumTemperature: "string",
+        minimumTemperature: "string",
+        rainProbability: "string",
+        source: "string",
+        sourceLogo: "string",
+        link: "string"
+      }, 1)
+    ];
   }
 
   ngOnInit() {
+    this.sources.sort((a: Source, b: Source) => b.votes - a.votes);
   }
 
 }

@@ -6,13 +6,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./title.component.scss']
 })
 export class TitleComponent implements OnInit {
-  title: string;
-  constructor() {
-    this.title = "Lada";
-  }
+  protected title: string;
+  private titles: string[];
+  private interval;
 
+
+  constructor() {
+    this.titles = ["Lada", "Лада", "Łada", "ლადა"];
+  }
 
   ngOnInit() {
+    this.setNewNameToTitle();
+    this.interval = setInterval(() => {
+      this.setNewNameToTitle();
+    }, 2000);
   }
 
+  ngOnDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
+  setNewNameToTitle(): void {
+    this.title = this.getRandomTitle();
+  }
+
+  getRandomTitle(): string {
+    return this.titles[Math.floor(Math.random() * this.titles.length)];
+  }
 }
