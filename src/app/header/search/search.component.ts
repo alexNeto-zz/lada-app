@@ -1,6 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { DayResume } from './../../main/weather-resume-item/day-resume';
+import { Component, OnInit } from '@angular/core';
 import { LocationFinderService } from './location-finder.service';
 import { LocationFound } from './location-found';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -12,13 +14,13 @@ export class SearchComponent implements OnInit {
   protected placeholder: string;
   protected address: string;
   private timeout;
-
-  @Output()
-  locationFound?: LocationFound;
+  private locationFound?: LocationFound;
+  private sourceDayResume: Subject<DayResume[]>
 
   constructor(private location: LocationFinderService) {
     this.placeholder = "Procure por uma localização";
     this.address = "";
+    this.sourceDayResume = this.location.getDayResumeList;
   }
 
   ngOnInit() {
@@ -38,6 +40,13 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
+    try {
+      const { x } = this.locationFound.candidates[0].location;
+      const { y } = this.locationFound.candidates[0].location;
+      this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => this.location.updateDayResumeList(data));
+    } catch (err) {
+
+    }
   }
 
   updateAddress() {
@@ -46,6 +55,7 @@ export class SearchComponent implements OnInit {
       const region = this.locationFound.candidates[0].attributes.Region;
       this.address = `${city} - ${region}`;
     } catch (err) {
+      this.address = "";
     }
   }
 

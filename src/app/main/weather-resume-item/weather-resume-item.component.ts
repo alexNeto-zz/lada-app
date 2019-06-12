@@ -10,7 +10,9 @@ export class WeatherResumeItemComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() source: Source;
 
-  constructor() { }
+  constructor() {
+    console.log(this.source);
+  }
 
   voteUp(): boolean {
     this.source.voteUp();
@@ -20,5 +22,8 @@ export class WeatherResumeItemComponent implements OnInit {
     this.source.voteDown();
     return false;
   }
-  ngOnInit() { }
+
+  ngOnInit() {
+    console.log(this.source);
+  }
 }
