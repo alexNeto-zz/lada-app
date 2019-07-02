@@ -11,8 +11,8 @@ import { Subject } from 'rxjs';
 })
 export class SearchComponent implements OnInit {
 
-  protected placeholder: string;
-  protected address: string;
+  public placeholder: string;
+  public address: string;
   private timeout;
   private locationFound?: LocationFound;
   private sourceDayResume: Subject<DayResume[]>
