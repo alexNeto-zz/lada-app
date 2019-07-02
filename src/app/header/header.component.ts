@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   title: string;
 
   constructor() {
-    this.title = "lada";
+    this.title = 'lada';
   }
 
   ngOnInit() {

@@ -10,6 +10,8 @@ import { DayResume } from './../../main/weather-resume-item/day-resume';
 })
 export class LocationFinderService {
   private baseUrl: string = environment.baseUrl;
+  private arcGisBaseUrl = 'https://geocode.arcgis.com';
+  private arcGisResource = '/arcgis/rest/services/World/GeocodeServer/findAddressCandidates';
   private dayResumeList: Subject<DayResume[]>;
   get getDayResumeList(): Subject<DayResume[]> {
     return this.dayResumeList;
@@ -19,11 +21,15 @@ export class LocationFinderService {
     this.dayResumeList = new Subject();
   }
 
-  findLocation(location: string): Observable<Object> {
-    return this.http.get(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?SingleLine=${location}&outFields=City,Region,Country&maxLocations=5&f=pjson`);
+  findLocation(location: string): Observable<any> {
+    return this.http.get(`
+    ${this.arcGisBaseUrl}
+    ${this.arcGisResource}
+    ?SingleLine=${location}
+    &outFields=City,Region,Country&maxLocations=5&f=pjson`);
   }
 
-  findWeatherResume(longitude: number, latitude: number): Observable<Object> {
+  findWeatherResume(longitude: number, latitude: number): Observable<object> {
     return this.http.get(`${this.baseUrl}/today_resume/list/${latitude}/${longitude}`);
   }
 

@@ -12,7 +12,7 @@ import { DayResume } from './../weather-resume-item/day-resume';
 export class WeatherResumeListComponent implements OnInit {
   sources: Source[];
   private dayResumeList: DayResume[];
-  private sourceDayResume: Subject<DayResume[]>
+  private sourceDayResume: Subject<DayResume[]>;
 
   constructor(private location: LocationFinderService) {
     this.sources = [];

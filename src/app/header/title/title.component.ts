@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
   styleUrls: ['./title.component.scss']
 })
-export class TitleComponent implements OnInit {
+export class TitleComponent implements OnInit, OnDestroy {
   public title: string;
   private titles: string[];
   private interval;
 
 
   constructor() {
-    this.titles = ["Lada", "Лада", "Łada", "ლადა"];
+    this.titles = ['Lada', 'Лада', 'Łada', 'ლადა'];
   }
 
   ngOnInit() {

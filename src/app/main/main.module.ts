@@ -9,7 +9,7 @@ const mainModules = [
   MainComponent,
   WeatherResumeListComponent,
   WeatherResumeItemComponent,
-]
+];
 
 @NgModule({
   declarations: [mainModules],

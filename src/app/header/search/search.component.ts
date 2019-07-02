@@ -15,11 +15,11 @@ export class SearchComponent implements OnInit {
   public address: string;
   private timeout;
   private locationFound?: LocationFound;
-  private sourceDayResume: Subject<DayResume[]>
+  private sourceDayResume: Subject<DayResume[]>;
 
   constructor(private location: LocationFinderService) {
-    this.placeholder = "Procure por uma localização";
-    this.address = "";
+    this.placeholder = 'Procure por uma localização';
+    this.address = '';
     this.sourceDayResume = this.location.getDayResumeList;
   }
 
@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit {
       .subscribe((data: LocationFound) => {
         this.locationFound = data;
         this.updateAddress();
-      })
+      });
   }
 
   search() {
@@ -55,7 +55,7 @@ export class SearchComponent implements OnInit {
       const region = this.locationFound.candidates[0].attributes.Region;
       this.address = `${city} - ${region}`;
     } catch (err) {
-      this.address = "";
+      this.address = '';
     }
   }
 
