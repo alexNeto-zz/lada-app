@@ -12,6 +12,7 @@ script:
  - ng lint
  - ng build --prod
 deploy:
+  skip_cleanup: true
   provider: firebase
   token:
-    secure: tOw9iBxlNV039xZKUgCgMOLs4zVUX1SoGOs/maxjDijjp6HaIFL+PvENqD8Pme4Z6hau1XoYVA0lugpJrFA+h1/ma5YaQF3rfycAzpkieVLA6C73tzAz0NRawqpTvreSI+5sMpP7oV/QaywRkQpY28DZr6+C++hkS03gjNz1cB7YFnrIjNSbRcIuegSv+aSJ93iJCg7AiW2BGkAq4W5DLOpb85u45l3/G63RsNzb5qpbh/cAeG+fcgyRQh3o0fSxcS5SaY11ntnzUiHqKu2ZboYDiogQbRZ41YhN3Nw4VSOuBnA2TwoUSjhA6Fwm7ZzzNQLP2VuOaee4y4tyKpEggPLUu7JAIDlCnxG/Q5ow0Pphk6q6pHbkK7DN3ZUA2Bf5jVO9LHRDrA1pFrKzGNSPfNbi0eFqY111+nnEL2ywHmedK6CT05vTv+ioxDoDW4OJMPz4eF8bUpzbzojD994A2aWD1NI2hUW02pzUJEDN192NqbMC8ikrqt6QF+C4eZ8yrr8pMzMZ/YjC0pa+PrvtgrA8NW+COmaLxWqfF6gV+JTnwWFutsNQbybmt+5gWAt5wKXhqpFlXi2y76ZN1RklQw2nkWrSD9dGCveaTmi/195DUdnoftU+uVOtr5GFmHaSdUmIRmmAuMSIGuCJjyEb/Ws2UmlSXto/E4adyWe9r/s=
+    secure: $FIREBASE_TOKEN
