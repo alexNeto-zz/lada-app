@@ -12,6 +12,7 @@ export class LocationFinderService {
   private baseUrl: string = environment.baseUrl;
   private arcGisBaseUrl = 'https://geocode.arcgis.com';
   private arcGisResource = '/arcgis/rest/services/World/GeocodeServer/findAddressCandidates';
+  private arcGisParameters = '&outFields=City,Region,Country&maxLocations=5&f=pjson';
   private dayResumeList: Subject<DayResume[]>;
   get getDayResumeList(): Subject<DayResume[]> {
     return this.dayResumeList;
@@ -22,11 +23,7 @@ export class LocationFinderService {
   }
 
   findLocation(location: string): Observable<any> {
-    return this.http.get(`
-    ${this.arcGisBaseUrl}
-    ${this.arcGisResource}
-    ?SingleLine=${location}
-    &outFields=City,Region,Country&maxLocations=5&f=pjson`);
+    return this.http.get(`${this.arcGisBaseUrl}${this.arcGisResource}?SingleLine=${location}${this.arcGisParameters}`);
   }
 
   findWeatherResume(longitude: number, latitude: number): Observable<object> {
