@@ -11,7 +11,6 @@ export class WeatherResumeItemComponent implements OnInit {
   @Input() source: Source;
 
   constructor() {
-    console.log(this.source);
   }
 
   voteUp(): boolean {
@@ -24,6 +23,5 @@ export class WeatherResumeItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.source);
   }
 }
