@@ -12,6 +12,8 @@ import { ToolPanelComponent } from './tool-panel/tool-panel.component';
 import { VoteComponent } from './components/vote/vote.component';
 import { UpVoteComponent } from './svg/up-vote/up-vote.component';
 import { DownVoteComponent } from './svg/down-vote/down-vote.component';
+import { WeatherCardComponent } from './content/weather-card/weather-card.component';
+import { WeatherListComponent } from './content/weather-list/weather-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { DownVoteComponent } from './svg/down-vote/down-vote.component';
     VoteComponent,
     UpVoteComponent,
     DownVoteComponent,
+    WeatherCardComponent,
+    WeatherListComponent,
   ],
   imports: [
     HttpClientModule,
