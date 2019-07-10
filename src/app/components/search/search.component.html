@@ -1,0 +1,19 @@
+<div id="search-component" class="level">
+  <input
+    type="text"
+    name="search"
+    id="search"
+    placeholder="{{ placeholder }}"
+    (input)="showLocations(seachLocation.value)"
+    #seachLocation
+  />
+  <div class="level-item has-text-centered">
+    <button id="search-button" class="button is-white" (click)="search()">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</div>
+
+<div id="response">
+  <span>{{ address }}</span>
+</div>
