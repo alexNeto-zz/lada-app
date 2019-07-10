@@ -1,5 +1,18 @@
-<app-toolbar></app-toolbar>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <h1 id="logo-text" class="title is-5">{{ title }}</h1>
+    </a>
+  </div>
 
-<div id="header-toolbar">
-    <app-search></app-search>
-</div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end level">
+      <div class="level-item has-text-centered">
+        <app-toggle
+          [id]="theme - selector"
+          [frontIcon]="'far fa-lightbulb'"
+        ></app-toggle>
+      </div>
+    </div>
+  </div>
+</nav>

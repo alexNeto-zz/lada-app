@@ -6,19 +6,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { SearchComponent } from './header/search/search.component';
-import { TitleComponent } from './header/title/title.component';
-import { ToolbarComponent } from './header/toolbar/toolbar.component';
-import { MainModule } from './main/main.module';
-import { MaterialModule } from './material/material.module';
+import { ToolPanelComponent } from './tool-panel/tool-panel.component';
+import { ToggleComponent } from './components/toggle/toggle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TitleComponent,
-    SearchComponent,
-    ToolbarComponent,
+    ToolPanelComponent,
+    ToggleComponent,
   ],
   imports: [
     HttpClientModule,
@@ -26,9 +22,7 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    MainModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

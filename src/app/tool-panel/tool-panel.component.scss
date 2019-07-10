@@ -1,0 +1,12 @@
+@import "../../styles.scss";
+
+#tool-panel {
+  width: 100vw;
+  height: 180px;
+  background: linear-gradient(
+      106.87deg,
+      $green-2 0%,
+      rgba(255, 255, 255, 0) 100.94%
+    ),
+    $blue-2;
+}

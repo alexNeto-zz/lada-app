@@ -1,31 +1,3 @@
-@import "~@angular/material/theming";
-@include mat-core();
-
-
-$lada-app-primary: mat-palette($mat-indigo);
-$lada-app-accent: mat-palette($mat-pink, A200, A100, A400);
-
-$lada-app-warn: mat-palette($mat-red);
-
-$lada-app-theme: mat-light-theme($lada-app-primary, $lada-app-accent, $lada-app-warn);
-
-@include angular-material-theme($lada-app-theme);
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.example-fill-remaining-space {
-  flex: 1 1 auto;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+@import "colors.scss";
+@import "fonts.scss";
+@import "bulma";
