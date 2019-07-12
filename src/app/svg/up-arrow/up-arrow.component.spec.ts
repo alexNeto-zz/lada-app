@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpVoteComponent } from './up-vote.component';
+import { UpArrowComponent } from './up-arrow.component';
 
 describe('UpVoteComponent', () => {
-  let component: UpVoteComponent;
-  let fixture: ComponentFixture<UpVoteComponent>;
+  let component: UpArrowComponent;
+  let fixture: ComponentFixture<UpArrowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpVoteComponent ]
+      declarations: [UpArrowComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpVoteComponent);
+    fixture = TestBed.createComponent(UpArrowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

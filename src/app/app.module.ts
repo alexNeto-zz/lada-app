@@ -7,13 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
-import { HeaderComponent } from './header/header.component';
-import { ToolPanelComponent } from './tool-panel/tool-panel.component';
 import { VoteComponent } from './components/vote/vote.component';
-import { UpVoteComponent } from './svg/up-vote/up-vote.component';
-import { DownVoteComponent } from './svg/down-vote/down-vote.component';
 import { WeatherCardComponent } from './content/weather-card/weather-card.component';
 import { WeatherListComponent } from './content/weather-list/weather-list.component';
+import { HeaderComponent } from './header/header.component';
+import { DownArrowComponent } from './svg/down-arrow/down-arrow.component';
+import { UpArrowComponent } from './svg/up-arrow/up-arrow.component';
+import { ToolPanelComponent } from './tool-panel/tool-panel.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +23,10 @@ import { WeatherListComponent } from './content/weather-list/weather-list.compon
     ToggleComponent,
     SearchComponent,
     VoteComponent,
-    UpVoteComponent,
-    DownVoteComponent,
+    UpArrowComponent,
+    DownArrowComponent,
     WeatherCardComponent,
-    WeatherListComponent,
+    WeatherListComponent
   ],
   imports: [
     HttpClientModule,
