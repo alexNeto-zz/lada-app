@@ -6,7 +6,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./toggle.component.scss']
 })
 export class ToggleComponent implements OnInit {
-  @Input() id: string;
+  @Input() toggleId: string;
   @Input() frontText: string;
   @Input() frontIcon: string;
   @Input() backText: string;
