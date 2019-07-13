@@ -1,14 +1,16 @@
 <div id="weather-card" class="notification">
   <div id="weather-primary-info">
     <div id="weather-condition-container">
-      <div><p id="weather-current-temperature">25ºC</p></div>
+      <div *ngIf="currentWeather != undefined">
+        <p id="weather-current-temperature">25ºC</p>
+      </div>
       <div>
-        <!-- {{ source.dayResume.weatherCondition }} -->
-        <img
+        {{ source.dayResume.weatherCondition }}
+        <!-- <img
           id="weather-condition-icon"
           src="/assets/svg/weather/animated/thunder.svg"
           alt="weather condition"
-        />
+        /> -->
       </div>
     </div>
     <div class="line"></div>
