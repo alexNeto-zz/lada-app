@@ -3,30 +3,47 @@
 .line {
   width: 1px;
   height: 169px;
-  background-color: $gray-5;
+  background-color: $gray-4;
   align-self: center;
+  @media screen and (max-width: 320px) {
+    height: 130px;
+  }
 }
 
 #weather-card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin-top: 3rem;
-  height: 250px;
   background-color: #fff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  @media screen and (max-width: 375px) {
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  }
 }
 
 #weather-primary-info {
   display: flex;
   flex-direction: row;
   justify-content: baseline;
+  @media screen and (max-width: 425px) {
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 #weather-secondary-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media screen and (max-width: 425px) {
+    flex-direction: row;
+    width: 100%;
+    margin: 10px 0 0 0;
+    align-items: center;
+  }
 }
 
 #weather-condition-container {
@@ -34,9 +51,16 @@
   flex-direction: column;
   justify-content: space-between;
   margin-right: 2em;
+  @media screen and (max-width: 425px) {
+    font-size: 1em;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: 1.5em;
+  }
 }
 
 #weather-condition-icon {
+  vertical-align: middle;
   width: 100%;
 }
 
@@ -45,30 +69,40 @@
   flex-direction: column;
   justify-content: space-evenly;
 
-  font-family: "Muli", "Sans Serif";
+  font-family: $main-font;
   font-weight: 200;
   font-size: 1.85em;
   text-align: start;
   margin-left: 0.25em;
   color: $gray-4;
+  @media screen and (max-width: 375px) {
+    font-size: 1.5em;
+    margin-left: 0.5em;
+  }
 }
 
 #weather-card-source {
-  font-family: "Muli", "Sans Serif";
+  font-family: $main-font;
   font-weight: 200;
   font-size: 1.85em;
   text-align: end;
   color: $gray-4;
+  @media screen and (max-width: 425px) {
+    font-size: 1.25em;
+    text-align: start;
+  }
 }
 
 #weather-current-temperature {
-  font-family: "Muli", "Sans Serif";
+  font-family: $main-font;
   font-weight: 200;
-  font-size: 1.85em * 2;
+  font-size: 3.7em;
   text-align: center;
   color: $gray-4;
-}
-
-img {
-  vertical-align: middle;
+  @media screen and (max-width: 375px) {
+    font-size: 3em;
+  }
+  @media screen and (max-width: 320px) {
+    font-size: 1.5em;
+  }
 }
