@@ -9,10 +9,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public title: string;
   private titles: string[];
   private interval;
+  public isActive: boolean;
 
 
   constructor() {
     this.titles = ['Lada', 'Лада', 'Łada', 'ლადა'];
+    this.isActive = false;
   }
 
   ngOnInit() {
@@ -34,5 +36,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   getRandomTitle(): string {
     return this.titles[Math.floor(Math.random() * this.titles.length)];
+  }
+
+  toggleMenu() {
+    this.isActive = !this.isActive;
   }
 }

@@ -3,6 +3,9 @@
 #tool-panel {
   width: 100vw;
   height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(
       106.87deg,
       $green-2 0%,
