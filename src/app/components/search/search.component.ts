@@ -23,9 +23,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.findWeatherResume(position.coords.longitude, position.coords.latitude);
-    });
+    this.autoLocate();
   }
 
   showLocations(searchLocation) {
@@ -53,6 +51,20 @@ export class SearchComponent implements OnInit {
 
   private findWeatherResume(x: number, y: number) {
     this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => this.location.updateDayResumeList(data));
+  }
+
+  private autoLocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.findWeatherResume(position.coords.longitude, position.coords.latitude);
+      }, () => { }, this.geoOptions());
+    }
+  }
+
+  private geoOptions(): object {
+    return {
+      maximumAge: 5 * 60 * 1000
+    };
   }
 
   updateAddress() {

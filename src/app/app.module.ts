@@ -12,6 +12,8 @@ import { WeatherCardComponent } from './content/weather-card/weather-card.compon
 import { WeatherListComponent } from './content/weather-list/weather-list.component';
 import { HeaderComponent } from './header/header.component';
 import { ToolPanelComponent } from './tool-panel/tool-panel.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ToolPanelComponent } from './tool-panel/tool-panel.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
