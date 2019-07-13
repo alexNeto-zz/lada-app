@@ -11,8 +11,10 @@ export class ToggleComponent implements OnInit {
   @Input() frontIcon: string;
   @Input() backText: string;
   @Input() backIcon: string;
-  @Output() isActivated: boolean = true;
-  constructor() { }
+  @Output() isActivated: boolean;
+  constructor() {
+    this.isActivated = true;
+  }
 
   ngOnInit() {
   }

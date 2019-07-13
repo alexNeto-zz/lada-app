@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Source } from '../models/source.model';
 import { DayResume } from './../models/day-resume';
+import { LocationFinderService } from './../Services/location/location-finder.service';
 
 @Component({
   selector: 'app-weather-list',
