@@ -7,12 +7,7 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
-        "files": [
-          "/favicon.ico",
-          "/index.html",
-          "/*.css",
-          "/*.js",
-        ]
+        "files": ["/favicon.ico", "/index.html", "/*.css", "/*.js"]
       }
     },
     {
@@ -29,8 +24,18 @@
   ],
   "dataGroups": [
     {
-      "name": "pwa-demo-api",
+      "name": "lada-api",
       "urls": ["https://lada-api.herokuapp.com/**"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "7d",
+        "timeout": "10s"
+      }
+    },
+    {
+      "name": "arcGis-api",
+      "urls": ["https://geocode.arcgis.com/arcgis/rest/services/World/**"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
