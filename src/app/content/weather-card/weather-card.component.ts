@@ -8,6 +8,7 @@ import { Source } from '../models/source.model';
 })
 export class WeatherCardComponent implements OnInit {
   @Input() source: Source;
+  public currentWeather: string;
 
   constructor() {
   }
