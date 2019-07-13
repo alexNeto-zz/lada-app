@@ -5,20 +5,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SearchComponent } from './components/search/search.component';
+import { ToggleComponent } from './components/toggle/toggle.component';
+import { VoteComponent } from './components/vote/vote.component';
+import { WeatherCardComponent } from './content/weather-card/weather-card.component';
+import { WeatherListComponent } from './content/weather-list/weather-list.component';
 import { HeaderComponent } from './header/header.component';
-import { SearchComponent } from './header/search/search.component';
-import { TitleComponent } from './header/title/title.component';
-import { ToolbarComponent } from './header/toolbar/toolbar.component';
-import { MainModule } from './main/main.module';
-import { MaterialModule } from './material/material.module';
+import { ToolPanelComponent } from './tool-panel/tool-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TitleComponent,
+    ToolPanelComponent,
+    ToggleComponent,
     SearchComponent,
-    ToolbarComponent,
+    VoteComponent,
+    WeatherCardComponent,
+    WeatherListComponent
   ],
   imports: [
     HttpClientModule,
@@ -26,9 +30,7 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    MainModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

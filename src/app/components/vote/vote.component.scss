@@ -1,0 +1,17 @@
+@import "../../../styles.scss";
+
+#vote-component {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  font-family: "Muli", "Sans Serif";
+  font-weight: 200;
+  font-size: 1.85em;
+  margin-right: 5px;
+  margin-left: 5px;
+  color: $gray-3;
+}

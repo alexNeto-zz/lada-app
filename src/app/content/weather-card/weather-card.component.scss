@@ -1,0 +1,74 @@
+@import "../../../styles.scss";
+
+.line {
+  width: 1px;
+  height: 169px;
+  background-color: $gray-5;
+  align-self: center;
+}
+
+#weather-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 3rem;
+  height: 250px;
+  background-color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#weather-primary-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+}
+
+#weather-secondary-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#weather-condition-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 2em;
+}
+
+#weather-condition-icon {
+  width: 100%;
+}
+
+#weather-today-condition {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  font-family: "Muli", "Sans Serif";
+  font-weight: 200;
+  font-size: 1.85em;
+  text-align: start;
+  margin-left: 0.25em;
+  color: $gray-4;
+}
+
+#weather-card-source {
+  font-family: "Muli", "Sans Serif";
+  font-weight: 200;
+  font-size: 1.85em;
+  text-align: end;
+  color: $gray-4;
+}
+
+#weather-current-temperature {
+  font-family: "Muli", "Sans Serif";
+  font-weight: 200;
+  font-size: 1.85em * 2;
+  text-align: center;
+  color: $gray-4;
+}
+
+img {
+  vertical-align: middle;
+}

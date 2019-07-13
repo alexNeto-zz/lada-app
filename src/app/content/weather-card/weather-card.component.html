@@ -1,0 +1,64 @@
+<!-- <div id="card" class="notification level">
+  <div class="level-left test">
+    <div class="level-item">
+      <div>
+        <p>25ºC</p>
+      </div>
+      <div>
+        <span><i class="far fa-sun"></i></span>
+      </div>
+    </div>
+    <div class="level-item line"></div>
+  </div>
+  <div class="level-right"></div>
+  <app-vote></app-vote>
+</div> -->
+
+<div id="weather-card" class="notification">
+  <div id="weather-primary-info">
+    <div id="weather-condition-container">
+      <div><p id="weather-current-temperature">25ºC</p></div>
+      <div>
+        {{ source.dayResume.weatherCondition }}
+        <!-- <img
+          id="weather-condition-icon"
+          src="/assets/svg/weather/animated/thunder.svg"
+          alt="weather condition"
+        /> -->
+      </div>
+    </div>
+    <div class="line"></div>
+    <div id="weather-today-condition">
+      <div>
+        <img
+          src="/assets/svg/up-arrow.svg"
+          alt="icone para temperatura máxima"
+          srcset=""
+        />
+        {{ source.dayResume.maximumTemperature }}ºC
+      </div>
+      <div>
+        <img
+          src="/assets/svg/down-arrow.svg"
+          alt="icone para temperatura mínima"
+          srcset=""
+        />
+        {{ source.dayResume.minimumTemperature }}ºC
+      </div>
+      <div>Chuva: {{ source.dayResume.rainProbability }}</div>
+    </div>
+  </div>
+  <div id="weather-secondary-info">
+    <div>
+      <p id="weather-card-source">
+        <a
+          href="{{ source.dayResume.link }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ source.dayResume.source }}</a
+        >
+      </p>
+    </div>
+    <div><app-vote></app-vote></div>
+  </div>
+</div>
