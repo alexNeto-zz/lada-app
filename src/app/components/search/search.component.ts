@@ -23,6 +23,9 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.findWeatherResume(position.coords.longitude, position.coords.latitude);
+    });
   }
 
   showLocations(searchLocation) {
@@ -42,10 +45,14 @@ export class SearchComponent implements OnInit {
     try {
       const { x } = this.locationFound.candidates[0].location;
       const { y } = this.locationFound.candidates[0].location;
-      this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => this.location.updateDayResumeList(data));
+      this.findWeatherResume(x, y);
     } catch (err) {
       console.log(err);
     }
+  }
+
+  private findWeatherResume(x: number, y: number) {
+    this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => this.location.updateDayResumeList(data));
   }
 
   updateAddress() {
