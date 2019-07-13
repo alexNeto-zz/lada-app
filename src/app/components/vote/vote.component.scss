@@ -7,8 +7,11 @@
   justify-content: center;
 }
 
-h2 {
-  margin: 5px;
+p {
+  font-family: "Muli", "Sans Serif";
+  font-weight: 200;
+  font-size: 1.85em;
   margin-right: 5px;
   margin-left: 5px;
+  color: $gray-3;
 }

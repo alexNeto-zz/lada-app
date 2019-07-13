@@ -17,9 +17,9 @@
 <div id="weather-card" class="notification">
   <div id="weather-primary-info">
     <div id="weather-condition-container">
-      <div>25ºC</div>
+      <div><p id="weather-current-temperature">25ºC</p></div>
       <div>
-        <img
+        <img id="weather-condition-icon"
           src="/assets/svg/weather/animated/thunder.svg"
           alt="weather condition"
         />
@@ -27,13 +27,27 @@
     </div>
     <div class="line"></div>
     <div id="weather-today-condition">
-      <div></div>
-      <div></div>
-      <div></div>
+      <div>
+        <img
+          src="/assets/svg/up-arrow.svg"
+          alt="icone para temperatura máxima"
+          srcset=""
+        />
+        30ºC
+      </div>
+      <div>
+        <img
+          src="/assets/svg/down-arrow.svg"
+          alt="icone para temperatura mínima"
+          srcset=""
+        />
+        15ºC
+      </div>
+      <div>Chuva: 12%</div>
     </div>
   </div>
   <div id="weather-secondary-info">
-    <div></div>
-    <div></div>
+    <div><p id="weather-card-source">CPTEC</p></div>
+    <div><app-vote></app-vote></div>
   </div>
 </div>

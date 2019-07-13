@@ -11,8 +11,6 @@ import { VoteComponent } from './components/vote/vote.component';
 import { WeatherCardComponent } from './content/weather-card/weather-card.component';
 import { WeatherListComponent } from './content/weather-list/weather-list.component';
 import { HeaderComponent } from './header/header.component';
-import { DownArrowComponent } from './svg/down-arrow/down-arrow.component';
-import { UpArrowComponent } from './svg/up-arrow/up-arrow.component';
 import { ToolPanelComponent } from './tool-panel/tool-panel.component';
 
 @NgModule({
@@ -23,8 +21,6 @@ import { ToolPanelComponent } from './tool-panel/tool-panel.component';
     ToggleComponent,
     SearchComponent,
     VoteComponent,
-    UpArrowComponent,
-    DownArrowComponent,
     WeatherCardComponent,
     WeatherListComponent
   ],
