@@ -8,10 +8,13 @@
 }
 
 p {
-  font-family: "Muli", "Sans Serif";
+  font-family: $main-font;
   font-weight: 200;
   font-size: 1.85em;
   margin-right: 5px;
   margin-left: 5px;
   color: $gray-3;
+  @media screen and (max-width: 375px) {
+    font-size: 1.25em;
+  }
 }
