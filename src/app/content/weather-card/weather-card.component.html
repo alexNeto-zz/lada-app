@@ -19,10 +19,12 @@
     <div id="weather-condition-container">
       <div><p id="weather-current-temperature">25ºC</p></div>
       <div>
-        <img id="weather-condition-icon"
+        {{ source.dayResume.weatherCondition }}
+        <!-- <img
+          id="weather-condition-icon"
           src="/assets/svg/weather/animated/thunder.svg"
           alt="weather condition"
-        />
+        /> -->
       </div>
     </div>
     <div class="line"></div>
@@ -33,7 +35,7 @@
           alt="icone para temperatura máxima"
           srcset=""
         />
-        30ºC
+        {{ source.dayResume.maximumTemperature }}ºC
       </div>
       <div>
         <img
@@ -41,13 +43,22 @@
           alt="icone para temperatura mínima"
           srcset=""
         />
-        15ºC
+        {{ source.dayResume.minimumTemperature }}ºC
       </div>
-      <div>Chuva: 12%</div>
+      <div>Chuva: {{ source.dayResume.rainProbability }}</div>
     </div>
   </div>
   <div id="weather-secondary-info">
-    <div><p id="weather-card-source">CPTEC</p></div>
+    <div>
+      <p id="weather-card-source">
+        <a
+          href="{{ source.dayResume.link }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{ source.dayResume.source }}</a
+        >
+      </p>
+    </div>
     <div><app-vote></app-vote></div>
   </div>
 </div>

@@ -1,11 +1,3 @@
-<div class="container is-fullhd">
-  <app-weather-card></app-weather-card>
-  <app-weather-card></app-weather-card>
-  <app-weather-card></app-weather-card>
-  <app-weather-card></app-weather-card>
-  <app-weather-card></app-weather-card>
-  <app-weather-card></app-weather-card>
-  <app-weather-card></app-weather-card>
-  <app-weather-card></app-weather-card>
-  <app-weather-card></app-weather-card>
+<div class="container is-fullhd" *ngFor="let source of sources">
+  <app-weather-card [source]="source"></app-weather-card>
 </div>
