@@ -8,6 +8,9 @@
     name="switchRoundedDefault"
     class="switch is-rounded is-small"
     checked="checked"
+    (change)="toggleState(toggle.checked)"
+    disabled="disabled"
+    #toggle
   />
   <label for="{{ toggleId }}"
     ><i class="{{ backIcon }}"></i>{{ backText }}</label

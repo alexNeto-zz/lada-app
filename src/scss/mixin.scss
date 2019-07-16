@@ -1,0 +1,17 @@
+@import "./colors.scss";
+
+@mixin flex-box($direction: row, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+
+@mixin common-shadow($opacity: 0.15) {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, $opacity);
+}
+
+@mixin common-border {
+  border-width: 1px;
+  border-color: rgba($gray-3, 0.1);
+  border-style: solid;
+}

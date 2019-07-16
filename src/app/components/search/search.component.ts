@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { LocationFinderService } from '../../content/services/location/location-finder.service';
 import { DayResume } from './../../content/models/day-resume';
 import { LocationFound } from './../../content/models/location-found';
-import { LocationFinderService } from './../../content/Services/location/location-finder.service';
 
 @Component({
   selector: 'app-search',
