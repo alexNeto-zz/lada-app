@@ -11,22 +11,26 @@
 }
 
 #weather-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @include flex-box(row, space-between);
   flex-wrap: wrap;
   margin-top: 3rem;
-  background-color: #fff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   @media screen and (max-width: 375px) {
     padding: 1.25rem 1.25rem 1.25rem 1.25rem;
   }
 }
 
+.light {
+  background-color: $white;
+  @include common-shadow();
+}
+
+.dark {
+  background-color: $black;
+  @include common-border();
+}
+
 #weather-primary-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: baseline;
+  @include flex-box(row, baseline);
   @media screen and (max-width: 425px) {
     align-items: end;
     justify-content: center;
@@ -35,9 +39,7 @@
 }
 
 #weather-secondary-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex-box(column, space-between);
   @media screen and (max-width: 425px) {
     flex-direction: row;
     width: 100%;
@@ -47,9 +49,7 @@
 }
 
 #weather-condition-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex-box(column, space-between);
   margin-right: 2em;
   @media screen and (max-width: 425px) {
     font-size: 1em;
@@ -65,10 +65,7 @@
 }
 
 #weather-today-condition {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-
+  @include flex-box(column, space-evenly);
   font-family: $main-font;
   font-weight: 200;
   font-size: 1.85em;

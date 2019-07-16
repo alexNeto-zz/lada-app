@@ -1,16 +1,17 @@
-<div id="search-component" class="level">
+<div id="search-component" class="level light">
   <input
     type="text"
     name="search"
     id="search"
     placeholder="{{ placeholder }}"
     (input)="showLocations(seachLocation.value)"
+    (keyup.enter)="search()"
     #seachLocation
   />
   <div class="level-item has-text-centered">
-    <button id="search-button" class="button is-white" (click)="search()">
+    <a id="search-button" class="button" (click)="search()">
       <i class="fas fa-search"></i>
-    </button>
+    </a>
   </div>
 </div>
 

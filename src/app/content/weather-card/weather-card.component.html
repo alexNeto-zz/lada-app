@@ -1,4 +1,4 @@
-<div id="weather-card" class="notification">
+<div id="weather-card" class="notification light">
   <div id="weather-primary-info">
     <div id="weather-condition-container">
       <div *ngIf="currentWeather != undefined">
@@ -6,11 +6,11 @@
       </div>
       <div>
         {{ source.dayResume.weatherCondition }}
-        <!-- <img
+        <img
           id="weather-condition-icon"
           src="/assets/svg/weather/animated/thunder.svg"
           alt="weather condition"
-        /> -->
+        />
       </div>
     </div>
     <div class="line"></div>
