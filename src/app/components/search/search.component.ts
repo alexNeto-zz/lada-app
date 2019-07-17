@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { LocationFinderService } from '../../content/services/location/location-finder.service';
+import { LocationFinderService } from './../../content/services/location/location-finder.service';
 import { DayResume } from './../../content/models/day-resume';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CreateNewAutocompleteGroup, NgAutoCompleteComponent, SelectedAutocompleteItem } from 'ng-auto-complete';
 import { LocationFound } from './../../content/models/location-found';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -10,6 +11,21 @@ import { LocationFound } from './../../content/models/location-found';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  @ViewChild(NgAutoCompleteComponent, null) public completer: NgAutoCompleteComponent;
+
+  public group = [
+    CreateNewAutocompleteGroup(
+      'Procure por uma localização',
+      'completer',
+      [],
+      { titleKey: 'title', childrenKey: null }
+    ),
+  ];
+
+  Selected(item: SelectedAutocompleteItem) {
+    // console.log(item.item.original.teste);
+  }
+
   public placeholder: string;
   public address: string;
   private timeout: any;
@@ -28,12 +44,13 @@ export class SearchComponent implements OnInit {
 
   showLocations(searchLocation) {
     clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => this.makeRequestToLocation(searchLocation), 250);
+    this.timeout = setTimeout(() => this.makeRequestToLocation(searchLocation.target.value), 300);
   }
 
   makeRequestToLocation(searchLocation): void {
     this.location.findLocation(searchLocation)
       .subscribe((data: LocationFound) => {
+        this.completer.SetValues('completer', this.getLocationList(data))
         this.locationFound = data;
         this.updateAddress();
       });
@@ -47,6 +64,20 @@ export class SearchComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  private getLocationList(data: LocationFound) {
+    return data.candidates.map((item, index) => {
+      return { title: item.address, id: index, location: item };
+    });
+    // return [
+    //   { title: 'Option 4', id: '1', teste: [1, 2, 3, 4] },
+    //   { title: 'Option 5', id: '2', teste: [1, 2, 3, 4] },
+    //   { title: 'Option 6', id: '3', teste: [1, 2, 3, 4] },
+    //   { title: 'Option 7', id: '4', teste: [1, 2, 3, 4] },
+    //   { title: 'Option 8', id: '5', teste: [1, 2, 3, 4] },
+    //   { title: 'Option 9', id: '6', teste: [1, 2, 3, 4] },
+    // ];
   }
 
   private findWeatherResume(x: number, y: number) {
