@@ -21,7 +21,7 @@ interface Extent {
     ymax: number;
 }
 
-interface Candidate {
+export interface Candidate {
     address: string;
     location: Location;
     score: number;

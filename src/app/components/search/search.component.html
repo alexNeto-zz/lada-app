@@ -5,13 +5,13 @@
     id="search"
     placeholder="{{ placeholder }}"
     (input)="showLocations(seachLocation.value)"
-    (keyup.enter)="search()"
     #seachLocation
   /> -->
   <ng-auto-complete
     id="search-auto-complete"
     (input)="showLocations($event)"
-    (selected)="Selected($event)"
+    (selected)="selected($event)"
+    (keyup.enter)="search()"
     [classes]="['']"
     [group]="group"
   ></ng-auto-complete>
