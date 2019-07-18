@@ -37,11 +37,11 @@ export class SearchComponent implements OnInit {
   }
 
   makeRequestToLocation(searchLocation): void {
-    this.searchBO.makeRequest(searchLocation, this.onRequestSuccess.bind(this))
+    this.searchBO.makeRequest(searchLocation, this.onRequestSuccess.bind(this));
   }
 
   private onRequestSuccess(data: LocationFound) {
-    this.completer.SetValues('completer', this.getLocationList(data))
+    this.completer.SetValues('completer', this.getLocationList(data));
   }
 
   public getLocationList(data: LocationFound) {
