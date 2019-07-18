@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { LocationFinderService } from '../../content/services/location/location-finder.service';
-import { DayResume } from './../../content/models/day-resume';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CreateNewAutocompleteGroup, NgAutoCompleteComponent, SelectedAutocompleteItem } from 'ng-auto-complete';
 import { LocationFound } from './../../content/models/location-found';
+import { SearchBO } from './search.model';
 
 @Component({
   selector: 'app-search',
@@ -10,78 +9,53 @@ import { LocationFound } from './../../content/models/location-found';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  public placeholder: string;
-  public address: string;
-  private timeout: any;
-  private locationFound?: LocationFound;
-  private sourceDayResume: Subject<DayResume[]>;
+  @ViewChild(NgAutoCompleteComponent, null) public completer: NgAutoCompleteComponent;
 
-  constructor(private location: LocationFinderService) {
+  public group = [
+    CreateNewAutocompleteGroup(
+      'Procure por uma localização',
+      'completer',
+      [],
+      { titleKey: 'title', childrenKey: null }
+    ),
+  ];
+
+  public placeholder: string;
+  private timeout: any;
+
+  constructor(private searchBO: SearchBO) {
     this.placeholder = 'Procure por uma localização';
-    this.address = '';
-    this.sourceDayResume = this.location.getDayResumeList;
   }
 
   ngOnInit() {
-    this.autoLocate();
+    this.searchBO.autoLocate();
   }
 
   showLocations(searchLocation) {
     clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => this.makeRequestToLocation(searchLocation), 250);
+    this.timeout = setTimeout(() => this.makeRequestToLocation(searchLocation.target.value), 300);
   }
 
   makeRequestToLocation(searchLocation): void {
-    this.location.findLocation(searchLocation)
-      .subscribe((data: LocationFound) => {
-        this.locationFound = data;
-        this.updateAddress();
-      });
+    this.searchBO.makeRequest(searchLocation, this.onRequestSuccess.bind(this));
+  }
+
+  private onRequestSuccess(data: LocationFound) {
+    this.completer.SetValues('completer', this.getLocationList(data));
+  }
+
+  public getLocationList(data: LocationFound) {
+    return data.candidates.map((item, index) => {
+      return { title: item.address, id: index, location: item };
+    });
+  }
+
+  selected(item: SelectedAutocompleteItem) {
+    this.searchBO.selected(item);
   }
 
   search() {
-    try {
-      const { x } = this.locationFound.candidates[0].location;
-      const { y } = this.locationFound.candidates[0].location;
-      this.findWeatherResume(x, y);
-    } catch (err) {
-      console.log(err);
-    }
+    this.searchBO.search();
   }
 
-  private findWeatherResume(x: number, y: number) {
-    this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => this.location.updateDayResumeList(data));
-  }
-
-  private autoLocate() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.findWeatherResume(position.coords.longitude, position.coords.latitude);
-      }, () => { }, this.geoOptions());
-    }
-  }
-
-  private geoOptions(): object {
-    return {
-      maximumAge: 5 * 60 * 1000
-    };
-  }
-
-  updateAddress() {
-    try {
-      const city = this.locationFound.candidates[0].attributes.City;
-      const region = this.locationFound.candidates[0].attributes.Region;
-      this.address = `${city} - ${region}`;
-    } catch (err) {
-      this.address = '';
-    }
-  }
-
-  getCandidates() {
-    try {
-      return this.locationFound.candidates;
-    } catch (err) {
-      return undefined;
-    }
-  }
 }

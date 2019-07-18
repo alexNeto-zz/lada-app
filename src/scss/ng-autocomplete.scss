@@ -1,0 +1,73 @@
+@import "./mixin.scss";
+@import "./colors.scss";
+@import "./fonts.scss";
+
+.ng-autocomplete-dropdown .ng-autocomplete-inputs {
+  z-index: 3;
+  width: 100%;
+}
+
+.ng-autocomplete-dropdown .ng-autocomplete-inputs input {
+  display: flex;
+  background-color: transparent;
+  font-family: $main-font;
+  margin-left: 3%;
+  padding: 0;
+  color: $gray-2;
+  word-wrap: break-word;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 44px;
+  @media screen and (max-width: 370px) {
+    font-size: small;
+  }
+}
+
+.ng-autocomplete-dropdown .ng-autocomplete-placeholder {
+  display: none;
+}
+
+.ng-autocomplete-dropdown .ng-dropdown {
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  width: 500px;
+  background: white;
+
+  @include common-shadow();
+}
+
+.ng-autocomplete-dropdown .ng-dropdown.open {
+  display: block;
+  margin-top: -44px;
+  border-radius: 23px;
+  padding-left: 15px;
+  padding: 44px 0px 23px 0px;
+}
+
+.ng-autocomplete-dropdown .ng-dropdown .dropdown-item {
+  width: 100%;
+  cursor: pointer;
+  font-family: Arial;
+  font-weight: normal;
+  font-size: 1rem;
+  background-color: $white;
+}
+
+@mixin active-item {
+  color: $gray-4;
+  background: $blue-1;
+}
+
+.ng-autocomplete-dropdown .ng-dropdown .dropdown-item:hover {
+  @include active-item();
+}
+
+.ng-autocomplete-dropdown .ng-dropdown .dropdown-item.active {
+  @include active-item();
+}
+
+.ng-autocomplete-dropdown .ng-dropdown .dropdown-item .dropdown-item-highlight {
+  font-weight: bold;
+}

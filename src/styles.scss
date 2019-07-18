@@ -1,7 +1,9 @@
 @import "scss/colors.scss";
 @import "scss/fonts.scss";
 @import "scss/mixin.scss";
+@import "scss/ng-autocomplete.scss";
 @import "bulma";
+@import "normalize.css";
 
 :focus {
   outline: none;

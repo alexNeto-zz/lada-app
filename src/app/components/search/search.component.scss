@@ -28,6 +28,10 @@
   border: 1px solid rgba($gray-3, 0.7);
 }
 
+#search-auto-complete {
+  width: 100%;
+}
+
 #search {
   background-color: transparent;
   font-size: large;
@@ -57,9 +61,3 @@
   }
 }
 
-#response {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  color: $white;
-}

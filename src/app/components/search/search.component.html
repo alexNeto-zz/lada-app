@@ -1,13 +1,20 @@
 <div id="search-component" class="level light">
-  <input
+  <!-- <input
     type="text"
     name="search"
     id="search"
     placeholder="{{ placeholder }}"
     (input)="showLocations(seachLocation.value)"
-    (keyup.enter)="search()"
     #seachLocation
-  />
+  /> -->
+  <ng-auto-complete
+    id="search-auto-complete"
+    (input)="showLocations($event)"
+    (selected)="selected($event)"
+    (keyup.enter)="search()"
+    [classes]="['']"
+    [group]="group"
+  ></ng-auto-complete>
   <div class="level-item has-text-centered">
     <a id="search-button" class="button" (click)="search()">
       <i class="fas fa-search"></i>
@@ -15,6 +22,6 @@
   </div>
 </div>
 
-<div id="response">
+<!-- <div id="response">
   <span>{{ address }}</span>
-</div>
+</div> -->

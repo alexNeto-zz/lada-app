@@ -15,3 +15,22 @@
   border-color: rgba($gray-3, 0.1);
   border-style: solid;
 }
+
+@mixin light-gradient($left-color: $green-2, $right-color: $blue-2) {
+  background: linear-gradient(
+      106.87deg,
+      $left-color 0%,
+      rgba($white, 0) 100.94%
+    ),
+    $right-color;
+}
+
+@mixin dark-gradient {
+  background: linear-gradient(
+      90deg,
+      $black 0%,
+      rgba($gray-3, 0.45) 50%,
+      $black 100%
+    ),
+    $black;
+}
