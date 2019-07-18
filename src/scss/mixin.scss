@@ -34,3 +34,24 @@
     ),
     $black;
 }
+
+@mixin search-bar-sizes {
+  @media screen {
+    width: 500px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 438px;
+  }
+  @media screen and (max-width: 455px) {
+    width: 360px;
+  }
+  @media screen and (max-width: 355px) {
+    width: 320px;
+  }
+  @media screen and (max-width: 320px) {
+    width: 310px;
+  }
+  @media screen and (max-width: 305px) {
+    width: 200px;
+  }
+}

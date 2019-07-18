@@ -1,12 +1,4 @@
 <div id="search-component" class="level light">
-  <!-- <input
-    type="text"
-    name="search"
-    id="search"
-    placeholder="{{ placeholder }}"
-    (input)="showLocations(seachLocation.value)"
-    #seachLocation
-  /> -->
   <ng-auto-complete
     id="search-auto-complete"
     (input)="showLocations($event)"
@@ -21,7 +13,3 @@
     </a>
   </div>
 </div>
-
-<!-- <div id="response">
-  <span>{{ address }}</span>
-</div> -->

@@ -32,10 +32,9 @@
   display: none;
   position: absolute;
   overflow: hidden;
+  background: $white;
   z-index: 2;
-  width: 500px;
-  background: white;
-
+  @include search-bar-sizes();
   @include common-shadow();
 }
 
