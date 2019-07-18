@@ -54,10 +54,10 @@
 #search-button {
   color: $gray-2;
   border-radius: 100%;
+  z-index: 2;
   background-color: transparent;
   border: none;
   @media screen and (max-width: 370px) {
     font-size: small;
   }
 }
-
