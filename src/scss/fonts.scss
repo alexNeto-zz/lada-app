@@ -3,17 +3,20 @@ $main-font: "Muli", Helvetica, Arial, Sans-Serif;
 // Muli
 @font-face {
   font-family: Muli;
+  font-display: auto;
   src: url(/assets/fonts/Muli/Muli-Regular.ttf) format("truetype");
 }
 
 @font-face {
   font-family: Muli;
+  font-display: auto;
   src: url(/assets/fonts/Muli/Muli-ExtraLight.ttf) format("truetype");
   font-weight: 100;
 }
 
 @font-face {
   font-family: Muli;
+  font-display: auto;
   src: url(/assets/fonts/Muli/Muli-Light.ttf) format("truetype");
   font-weight: 200;
 }
