@@ -1,5 +1,7 @@
 # LadaApp
 
+[![Build Status](https://travis-ci.org/alexNeto/lada-app.svg?branch=master)](https://travis-ci.org/alexNeto/lada-app)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
 ## Development server
