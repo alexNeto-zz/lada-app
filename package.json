@@ -28,6 +28,7 @@
     "dexie": "^2.0.4",
     "hammerjs": "^2.0.8",
     "ng-auto-complete": "^4.1.8",
+    "ngx-indexed-db": "^2.2.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",
