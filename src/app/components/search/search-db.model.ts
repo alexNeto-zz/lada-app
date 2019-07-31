@@ -22,7 +22,4 @@ export class SearchDB {
     getLocation(success, error) {
         this.idb.retrieve('location', 1, success, error);
     }
-
-
-
 }

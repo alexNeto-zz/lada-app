@@ -63,8 +63,11 @@ export class SearchBO {
     searchStoredLocation() {
         this.searchDB.getLocation(
             location => {
-                if (location) this.findWeatherResume(location.x, location.y)
-                else this.autoLocate()
+                if (location) {
+                    this.findWeatherResume(location.x, location.y);
+                } else {
+                    this.autoLocate();
+                }
             },
             (_) => this.autoLocate()
         );

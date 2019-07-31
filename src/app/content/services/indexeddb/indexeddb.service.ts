@@ -33,7 +33,7 @@ export class IndexeddbService {
   create(storeName: string, value: object, key?: any) {
     this.openDatabase(storeName).subscribe(
       (_) => this.idb.add(storeName, value, key)
-    )
+    );
   }
 
   retrieve(storeName: string, key: any, callback, error) {
@@ -42,7 +42,7 @@ export class IndexeddbService {
         (item) => callback(item),
         (err) => error(err)
       )
-    )
+    );
   }
 
   update(storeName: string, value: object, key: any) {

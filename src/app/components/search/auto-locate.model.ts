@@ -13,10 +13,15 @@ export class AutoLocateModel {
     autoLocate(onFindLocation, ask = false) {
         from((navigator as any).permissions.query({ name: 'geolocation' })).subscribe(
             (result: any) => {
-                if (result.state == 'granted' || ask)
-                    this.locate(onFindLocation);
+                this.locateIfGranted(result.state, onFindLocation, ask);
             }
         );
+    }
+
+    locateIfGranted(state, onFindLocation, ask) {
+        if (state === 'granted' || ask) {
+            this.locate(onFindLocation);
+        }
     }
 
     locate(onFindLocation) {
