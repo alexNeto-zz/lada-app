@@ -4,6 +4,7 @@ import { DayResume } from './../../content/models/day-resume';
 import { Candidate, LocationFound } from './../../content/models/location-found';
 import { LocationFinderService } from './../../content/services/location/location-finder.service';
 import { AutoLocateModel } from './auto-locate.model';
+import { SearchDB } from './search-db.model';
 
 @Injectable({
     providedIn: 'root'
@@ -14,11 +15,11 @@ export class SearchBO {
     private locationFound?: LocationFound;
     private candidate?: Candidate;
 
-    constructor(private location: LocationFinderService, private autoLocateModel: AutoLocateModel) {
+    constructor(private location: LocationFinderService, private autoLocateModel: AutoLocateModel, private searchDB: SearchDB) {
     }
 
-    autoLocate() {
-        this.autoLocateModel.autoLocate(this.findWeatherResume.bind(this));
+    autoLocate(ask = false) {
+        this.autoLocateModel.autoLocate(this.findWeatherResume.bind(this), ask);
     }
 
     makeRequest(searchLocation, onSuccess): void {
@@ -47,6 +48,7 @@ export class SearchBO {
     }
 
     public findWeatherResume(x: number, y: number) {
+        this.searchDB.updateLocation(x, y);
         this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => this.location.updateDayResumeList(data));
     }
 
@@ -56,5 +58,15 @@ export class SearchBO {
         } catch (err) {
             return undefined;
         }
+    }
+
+    searchStoredLocation() {
+        this.searchDB.getLocation(
+            location => {
+                if (location) this.findWeatherResume(location.x, location.y)
+                else this.autoLocate()
+            },
+            (_) => this.autoLocate()
+        );
     }
 }
