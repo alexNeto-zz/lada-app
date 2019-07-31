@@ -29,7 +29,7 @@
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
-        "maxAge": "7d",
+        "maxAge": "2d",
         "timeout": "10s"
       }
     },
@@ -39,7 +39,7 @@
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
-        "maxAge": "7d",
+        "maxAge": "2d",
         "timeout": "10s"
       }
     }
