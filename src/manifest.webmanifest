@@ -1,6 +1,6 @@
 {
-  "name": "lada",
-  "short_name": "lada",
+  "name": "lada-app",
+  "short_name": "lada-app",
   "theme_color": "#fff",
   "background_color": "#fff",
   "display": "standalone",
