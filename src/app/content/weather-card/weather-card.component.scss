@@ -1,13 +1,12 @@
 @import "../../../styles.scss";
 
+$source-size: 768px;
+
 .line {
   width: 1px;
   height: 169px;
-  background-color: $gray-4;
+  background-color: rgba($color: $gray-4, $alpha: 0.6);
   align-self: center;
-  @media screen and (max-width: 320px) {
-    height: 130px;
-  }
 }
 
 #weather-card {
@@ -40,7 +39,7 @@
 
 #weather-secondary-info {
   @include flex-box(column, space-between);
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: $source-size) {
     flex-direction: row;
     width: 100%;
     margin: 10px 0 0 0;
@@ -53,9 +52,6 @@
   margin-right: 2em;
   @media screen and (max-width: 425px) {
     font-size: 1em;
-  }
-  @media screen and (max-width: 320px) {
-    font-size: 1.5em;
   }
 }
 
@@ -72,9 +68,15 @@
   text-align: start;
   margin-left: 0.25em;
   color: $gray-4;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: $source-size) {
     font-size: 1.5em;
-    margin-left: 0.5em;
+    font-weight: 200;
+    width: 100%;
+  }
+  @media screen and (max-width: 425px) {
+    font-size: 1.25em;
+    margin-left: 10%;
+    width: 100%;
   }
 }
 
@@ -84,7 +86,7 @@
   font-size: 1.85em;
   text-align: end;
   color: $gray-4;
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: $source-size) {
     font-size: 1.25em;
     text-align: start;
   }
@@ -100,6 +102,6 @@
     font-size: 3em;
   }
   @media screen and (max-width: 320px) {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 }
