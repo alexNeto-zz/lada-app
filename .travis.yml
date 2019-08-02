@@ -11,7 +11,7 @@ before_script:
 script:
  - npm install
  - ng lint
- - ng build --prod --aot --buildOptimizer --vendorChunk
+ - ng build --prod --aot --buildOptimizer
  - gulp purifyCSS
 deploy:
   skip_cleanup: true

@@ -34,6 +34,7 @@ export class SearchBO {
     selected(item: SelectedAutocompleteItem) {
         if (item.item != null) {
             this.candidate = item.item.original.location;
+            this.search();
         }
     }
 

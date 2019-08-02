@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const purify = require('gulp-purifycss');
 
 gulp.task('purifyCSS', () => {
-    return gulp.src('./dist/styles.*.css')
+    return gulp.src('./dist/**/*.css')
         .pipe(
             purify(
                 ['./src/app/**/*.ts', './src/app/**/*.html'],
@@ -10,7 +10,7 @@ gulp.task('purifyCSS', () => {
                     info: true,
                     minify: true,
                     rejected: false,
-                    whitelist: ['*transition*', '*dimmer*']
+                    whitelist: ['*ng-autocomplete*', '*ng-dropdown*', '*dropdown-item*']
                 }
             ),
         )
