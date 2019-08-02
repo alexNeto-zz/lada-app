@@ -7,10 +7,12 @@ branches:
   - master
 before_script:
 - npm install -g @angular/cli
+- npm install gulp
 script:
  - npm install
  - ng lint
- - ng build --prod
+ - ng build --prod --aot --buildOptimizer --vendorChunk
+ - gulp purifyCSS
 deploy:
   skip_cleanup: true
   provider: firebase
