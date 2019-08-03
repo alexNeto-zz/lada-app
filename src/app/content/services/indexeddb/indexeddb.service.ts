@@ -41,7 +41,8 @@ export class IndexeddbService {
       (_) => from(this.idb.getByKey(storeName, key)).subscribe(
         (item) => callback(item),
         (err) => error(err)
-      )
+      ),
+      (err) => error(err)
     );
   }
 

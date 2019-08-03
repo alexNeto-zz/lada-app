@@ -78,7 +78,10 @@ export class SearchBO {
                     this.autoLocate();
                 }
             },
-            (_) => this.autoLocate()
+            (_) => {
+                this.autoLocate();
+                this.isLoading = false;
+            }
         );
     }
 }
