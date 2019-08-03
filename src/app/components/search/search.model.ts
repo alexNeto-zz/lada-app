@@ -12,14 +12,12 @@ import { SearchDB } from './search-db.model';
 export class SearchBO {
 
     public isLoading: boolean;
-    public isLoadingGPS: boolean;
     public placeholder: string;
     private locationFound?: LocationFound;
     private candidate?: Candidate;
 
     constructor(private location: LocationFinderService, private autoLocateModel: AutoLocateModel, private searchDB: SearchDB) {
         this.isLoading = false;
-        this.isLoadingGPS = false;
     }
 
     autoLocate(ask = false) {

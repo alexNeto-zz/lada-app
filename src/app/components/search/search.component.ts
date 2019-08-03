@@ -11,6 +11,10 @@ import { SearchBO } from './search.model';
 export class SearchComponent implements OnInit {
   @ViewChild(NgAutoCompleteComponent, null) public completer: NgAutoCompleteComponent;
 
+  get isLoading() {
+    return this.searchBO.isLoading;
+  }
+
   public group = [
     CreateNewAutocompleteGroup(
       'Procure por uma localização',

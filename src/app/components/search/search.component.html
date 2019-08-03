@@ -22,7 +22,7 @@
       aria-label="procure localização inserida"
       class="button tooltip"
       data-tooltip="Pesquisar"
-      [ngClass]="{ 'is-loading': searchBO.isLoading }"
+      [ngClass]="{ 'is-loading': isLoading }"
       (click)="search()"
     >
       <i class="fas fa-search"></i>
