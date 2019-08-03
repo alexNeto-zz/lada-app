@@ -8,10 +8,23 @@
     [group]="group"
   ></ng-auto-complete>
   <div class="level-item has-text-centered">
-    <a id="search-gps-button" class="button" (click)="searchGPS(true)">
+    <a
+      id="search-gps-button"
+      aria-label="procure por GPS"
+      class="button tooltip"
+      data-tooltip="Pesquisar por GPS"
+      (click)="searchGPS(true)"
+    >
       <i class="far fa-compass"></i>
     </a>
-    <a id="search-button" class="button" (click)="search()">
+    <a
+      id="search-button"
+      aria-label="procure localização inserida"
+      class="button tooltip"
+      data-tooltip="Pesquisar"
+      [ngClass]="{ 'is-loading': isLoading }"
+      (click)="search()"
+    >
       <i class="fas fa-search"></i>
     </a>
   </div>

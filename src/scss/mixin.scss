@@ -7,7 +7,8 @@
 }
 
 @mixin common-shadow($opacity: 0.15) {
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, $opacity);
+  box-shadow: 0 3px 6px rgba($color: black, $alpha: $opacity),
+    0 3px 6px rgba($color: black, $alpha: 0.23);
 }
 
 @mixin common-border {

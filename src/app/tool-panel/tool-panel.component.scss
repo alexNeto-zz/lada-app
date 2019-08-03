@@ -4,11 +4,19 @@
   width: 100%;
   height: 180px;
   align-items: center;
+  transition-duration: 1s;
+  animation: swift-out 2s cubic-bezier(0.55, 0, 0.1, 1) infinite;
 }
 
 #tool-panel {
   @include tool-panel();
   @include flex-box(row, center);
+}
+
+.expanded-tool-panel {
+  width: 100%;
+  margin-top: -3.25rem;
+  height: 100vh !important;
 }
 
 .light {

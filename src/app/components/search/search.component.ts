@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { CreateNewAutocompleteGroup, NgAutoCompleteComponent, SelectedAutocompleteItem } from 'ng-auto-complete';
 import { LocationFound } from './../../content/models/location-found';
 import { SearchBO } from './search.model';
@@ -10,6 +10,10 @@ import { SearchBO } from './search.model';
 })
 export class SearchComponent implements OnInit {
   @ViewChild(NgAutoCompleteComponent, null) public completer: NgAutoCompleteComponent;
+
+  get isLoading() {
+    return this.searchBO.isLoading;
+  }
 
   public group = [
     CreateNewAutocompleteGroup(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Source } from '../models/source.model';
 import { LocationFinderService } from '../services/location/location-finder.service';
@@ -11,6 +11,8 @@ import { DayResume } from './../models/day-resume';
 })
 export class WeatherListComponent implements OnInit {
 
+  @Output()
+  public sourceQuantity = new EventEmitter<number>();
   sources: Source[];
   private dayResumeList: DayResume[];
   private sourceDayResume: Subject<DayResume[]>;
@@ -34,6 +36,7 @@ export class WeatherListComponent implements OnInit {
     this.dayResumeList.forEach(item => {
       this.sources.push(new Source(item, 3));
     });
+    this.sourceQuantity.emit(this.sources.length);
     return this.sources;
   }
 
