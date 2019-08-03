@@ -11,9 +11,8 @@
     <a
       id="search-gps-button"
       aria-label="procure por GPS"
-      class="button tooltip"
+      class="button"
       [ngClass]="{ 'is-loading': isLoadingGPS }"
-      data-tooltip="Pesquisar por GPS"
       (click)="searchGPS(true)"
     >
       <i class="far fa-compass"></i>
@@ -21,8 +20,7 @@
     <a
       id="search-button"
       aria-label="procure localização inserida"
-      class="button tooltip"
-      data-tooltip="Pesquisar"
+      class="button"
       [ngClass]="{ 'is-loading': isLoading }"
       (click)="search()"
     >

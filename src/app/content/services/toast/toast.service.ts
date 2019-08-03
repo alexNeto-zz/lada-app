@@ -12,9 +12,9 @@ export class ToastService {
     toast({
       message: message,
       type: 'is-warning',
-      position: 'top-left',
+      position: 'bottom-center',
       pauseOnHover: true,
-      animate: { in: 'bounceIn', out: 'slideOutLeft' }
+      animate: { in: 'bounceIn', out: 'slideOutDown' }
     });
   }
 
