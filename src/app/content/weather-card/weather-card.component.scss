@@ -105,3 +105,9 @@ $source-size: 768px;
     font-size: 1.25em;
   }
 }
+
+.notification {
+  @media screen and (max-width: 1023px) {
+    border-radius: 0;
+  }
+}

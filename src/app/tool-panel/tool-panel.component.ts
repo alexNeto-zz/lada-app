@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tool-panel',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolPanelComponent implements OnInit {
 
+  @Input()
+  public sourceQuantity: Number = 0;
   constructor() { }
 
   ngOnInit() {

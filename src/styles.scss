@@ -12,6 +12,10 @@
   border: 0;
 }
 
+::selection {
+  background: $green-2;
+}
+
 button {
   background: none transparent;
   border: none;
@@ -23,4 +27,8 @@ button {
 
 .light {
   background: $white;
+}
+
+html {
+  overflow-y: auto;
 }

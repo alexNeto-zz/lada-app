@@ -1,3 +1,7 @@
-<div id="tool-panel" class="light">
+<div
+  id="tool-panel"
+  class="light"
+  [ngClass]="{ 'expanded-tool-panel': !sourceQuantity }"
+>
   <app-search></app-search>
 </div>

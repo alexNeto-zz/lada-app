@@ -11,11 +11,15 @@ import { SearchDB } from './search-db.model';
 })
 export class SearchBO {
 
+    public isLoading: boolean;
+    public isLoadingGPS: boolean;
     public placeholder: string;
     private locationFound?: LocationFound;
     private candidate?: Candidate;
 
     constructor(private location: LocationFinderService, private autoLocateModel: AutoLocateModel, private searchDB: SearchDB) {
+        this.isLoading = false;
+        this.isLoadingGPS = false;
     }
 
     autoLocate(ask = false) {
@@ -33,6 +37,7 @@ export class SearchBO {
 
     selected(item: SelectedAutocompleteItem) {
         if (item.item != null) {
+            this.isLoading = true;
             this.candidate = item.item.original.location;
             this.search();
         }
@@ -42,6 +47,7 @@ export class SearchBO {
         try {
             const { x } = this.candidate.location;
             const { y } = this.candidate.location;
+            this.isLoading = true;
             this.findWeatherResume(x, y);
         } catch (err) {
             console.log(err);
@@ -50,7 +56,10 @@ export class SearchBO {
 
     public findWeatherResume(x: number, y: number) {
         this.searchDB.updateLocation(x, y);
-        this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => this.location.updateDayResumeList(data));
+        this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => {
+            this.location.updateDayResumeList(data)
+            this.isLoading = false;
+        });
     }
 
     getCandidates() {
@@ -62,6 +71,7 @@ export class SearchBO {
     }
 
     searchStoredLocation() {
+        this.isLoading = true;
         this.searchDB.getLocation(
             location => {
                 if (location) {
