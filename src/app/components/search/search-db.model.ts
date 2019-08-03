@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { IndexeddbService } from 'src/app/content/services/indexeddb/indexeddb.service';
 
 @Injectable({
@@ -7,16 +6,11 @@ import { IndexeddbService } from 'src/app/content/services/indexeddb/indexeddb.s
 })
 export class SearchDB {
 
-
-
-    constructor(private idb: IndexeddbService) {
-
-    }
+    constructor(private idb: IndexeddbService) {    }
 
     updateLocation(x: number, y: number) {
         const key = 1;
         this.idb.update('location', { x: x, y: y }, key);
-
     }
 
     getLocation(success, error) {
