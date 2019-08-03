@@ -57,7 +57,7 @@ export class SearchBO {
     public findWeatherResume(x: number, y: number) {
         this.searchDB.updateLocation(x, y);
         this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => {
-            this.location.updateDayResumeList(data)
+            this.location.updateDayResumeList(data);
             this.isLoading = false;
         });
     }
