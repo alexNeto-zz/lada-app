@@ -31,7 +31,14 @@
         />
         {{ source.dayResume.minimumTemperature }}ºC
       </div>
-      <div>Chuva: {{ source.dayResume.rainProbability }}</div>
+      <div>
+        <img
+          src="/assets/svg/drop.svg"
+          alt="icone para probabilidade de chuva"
+          srcset=""
+        />
+        {{ source.dayResume.rainProbability }}
+      </div>
     </div>
   </div>
   <div id="weather-secondary-info">

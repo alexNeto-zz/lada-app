@@ -13,7 +13,7 @@ export class ToastService {
       message: message,
       type: 'is-warning',
       position: 'bottom-center',
-      pauseOnHover: true,
+      closeOnClick: true,
       animate: { in: 'bounceIn', out: 'slideOutDown' }
     });
   }
