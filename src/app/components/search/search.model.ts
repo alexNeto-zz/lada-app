@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SelectedAutocompleteItem } from 'ng-auto-complete';
+import { ToastService } from 'src/app/content/services/toast/toast.service';
 import { DayResume } from './../../content/models/day-resume';
 import { Candidate, LocationFound } from './../../content/models/location-found';
 import { LocationFinderService } from './../../content/services/location/location-finder.service';
@@ -12,16 +13,38 @@ import { SearchDB } from './search-db.model';
 export class SearchBO {
 
     public isLoading: boolean;
+    public isLoadingGPS: boolean;
+    public ask: boolean;
     public placeholder: string;
     private locationFound?: LocationFound;
     private candidate?: Candidate;
 
-    constructor(private location: LocationFinderService, private autoLocateModel: AutoLocateModel, private searchDB: SearchDB) {
+    constructor(
+        private location: LocationFinderService,
+        private autoLocateModel: AutoLocateModel,
+        private searchDB: SearchDB,
+        private toast: ToastService
+    ) {
         this.isLoading = false;
+        this.isLoadingGPS = false;
+        this.ask = false;
     }
 
+
     autoLocate(ask = false) {
-        this.autoLocateModel.autoLocate(this.findWeatherResume.bind(this), ask);
+        this.ask = ask;
+        this.autoLocateModel.autoLocate((x: number, y: number) => {
+            this.isLoadingGPS = true;
+            this.findWeatherResume(x, y);
+        }, this.onBlockLocation.bind(this), ask);
+    }
+
+    onBlockLocation() {
+        this.isLoadingGPS = false;
+        this.isLoading = false;
+        if (this.ask) {
+            this.toast.warning('A localização está bloqueada');
+        }
     }
 
     makeRequest(searchLocation, onSuccess): void {
@@ -57,6 +80,7 @@ export class SearchBO {
         this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => {
             this.location.updateDayResumeList(data);
             this.isLoading = false;
+            this.isLoadingGPS = false;
         });
     }
 
@@ -81,6 +105,7 @@ export class SearchBO {
             (_) => {
                 this.autoLocate();
                 this.isLoading = false;
+                this.isLoadingGPS = false;
             }
         );
     }

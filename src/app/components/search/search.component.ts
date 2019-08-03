@@ -15,6 +15,10 @@ export class SearchComponent implements OnInit {
     return this.searchBO.isLoading;
   }
 
+  get isLoadingGPS() {
+    return this.searchBO.isLoadingGPS;
+  }
+
   public group = [
     CreateNewAutocompleteGroup(
       'Procure por uma localização',

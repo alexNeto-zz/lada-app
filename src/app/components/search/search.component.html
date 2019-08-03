@@ -12,6 +12,7 @@
       id="search-gps-button"
       aria-label="procure por GPS"
       class="button tooltip"
+      [ngClass]="{ 'is-loading': isLoadingGPS }"
       data-tooltip="Pesquisar por GPS"
       (click)="searchGPS(true)"
     >

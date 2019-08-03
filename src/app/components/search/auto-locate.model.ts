@@ -1,26 +1,35 @@
 import { Injectable } from '@angular/core';
 import { SearchDB } from './search-db.model';
 import { from } from 'rxjs';
+import { on } from 'cluster';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AutoLocateModel {
 
+    private onBlock;
+    private onFindLocation;
 
     constructor(private searchDB: SearchDB) { }
 
-    autoLocate(onFindLocation, ask = false) {
+    autoLocate(onFindLocation, onBlock, ask = false) {
+        this.onBlock = onBlock;
+        this.onFindLocation = onFindLocation;
         from((navigator as any).permissions.query({ name: 'geolocation' })).subscribe(
             (result: any) => {
-                this.locateIfGranted(result.state, onFindLocation, ask);
+                this.locateIfGranted(result.state, ask);
             }
         );
     }
 
-    locateIfGranted(state, onFindLocation, ask) {
-        if (state === 'granted' || ask) {
-            this.locate(onFindLocation);
+    locateIfGranted(state, ask) {
+        if (state === 'denied') {
+            this.onBlock();
+        } else if (state === 'granted' || ask) {
+            this.locate(this.onFindLocation);
+        } else {
+            this.onBlock();
         }
     }
 

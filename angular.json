@@ -34,7 +34,7 @@
               "node_modules/bulma-extensions/dist/css/bulma-extensions.min.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": ["node_modules/bulma-toast/dist/bulma-toast.min.js"],
             "es5BrowserSupport": true
           },
           "configurations": {
