@@ -14,7 +14,6 @@ export class ToastService {
       type: 'is-warning',
       position: 'bottom-center',
       closeOnClick: true,
-      animate: { in: 'bounceIn', out: 'slideOutDown' }
     });
   }
 

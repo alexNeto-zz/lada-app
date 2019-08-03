@@ -10,7 +10,7 @@ gulp.task('purifyCSS', () => {
                     info: true,
                     minify: true,
                     rejected: false,
-                    whitelist: ['*ng-autocomplete*', '*ng-dropdown*', '*dropdown-item*', 'animated']
+                    whitelist: ['*ng-autocomplete*', '*ng-dropdown*', '*dropdown-item*']
                 }
             ),
         )
