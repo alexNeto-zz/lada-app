@@ -13,7 +13,7 @@ export class FirestoreService {
       this.firestore
         .collection(collection)
         .add(data)
-        .then(res => { resolve(res) }, err => reject(err));
+        .then(res => { resolve(res); }, err => reject(err));
     });
   }
 
