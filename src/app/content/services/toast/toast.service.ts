@@ -17,5 +17,13 @@ export class ToastService {
     });
   }
 
+  error(message: string) {
+    toast({
+      message: message,
+      type: 'is-danger',
+      position: 'bottom-center',
+      closeOnClick: true,
+    });
+  }
 
 }

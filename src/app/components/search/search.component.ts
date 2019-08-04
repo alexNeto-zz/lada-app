@@ -53,7 +53,9 @@ export class SearchComponent implements OnInit {
   }
 
   public getLocationList(data: LocationFound) {
-    return data.candidates.map((item, index) => {
+    return data.candidates.filter(
+      (item) => item.attributes.City !== ''
+    ).map((item, index) => {
       return { title: item.address, id: index, location: item };
     });
   }
