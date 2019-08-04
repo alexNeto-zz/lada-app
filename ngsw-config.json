@@ -29,13 +29,13 @@
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
-        "maxAge": "1d",
+        "maxAge": "2d",
         "timeout": "10s"
       }
     },
     {
       "name": "arcGis-api",
-      "urls": ["https://geocode.arcgis.com/arcgis/rest/services/World/**"],
+      "urls": ["https://geocode.arcgis.com/**"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
