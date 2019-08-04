@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DayResume } from '../../models/day-resume';
+import { ToastService } from '../toast/toast.service';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class LocationFinderService {
         return this.dayResumeList;
     }
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private toast: ToastService) {
         this.dayResumeList = new Subject();
     }
 

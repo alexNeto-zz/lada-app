@@ -93,7 +93,12 @@ export class SearchBO {
                 this.location.updateDayResumeList(data);
                 this.isLoading = false;
                 this.isLoadingGPS = false;
+            },
+            () => {
+                this.isLoading = false;
+                this.isLoadingGPS = false;
             });
+        this.testIfOffline();
         this.appendCityToTitle(x, y);
     }
 
@@ -102,6 +107,12 @@ export class SearchBO {
             return this.locationFound.candidates;
         } catch (err) {
             return undefined;
+        }
+    }
+
+    testIfOffline() {
+        if (!navigator.onLine) {
+            this.toast.error('Você está offline');
         }
     }
 
