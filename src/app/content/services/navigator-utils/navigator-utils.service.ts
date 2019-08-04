@@ -10,10 +10,9 @@ export class NavigatorUtilsService {
     constructor(private toast: ToastService) { }
 
     makeRequestIfOnline(request): Observable<any> {
-        if (navigator.onLine) {
-            return request();
-        } else {
+        if (!navigator.onLine) {
             this.toast.error('Você está offline');
         }
+        return request();
     }
 }

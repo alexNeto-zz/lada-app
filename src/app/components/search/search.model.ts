@@ -1,12 +1,11 @@
-import { ArcGisService } from './../../content/services/arc-gis/arc-gis.service';
-import { TitleService } from './../../content/services/title/title.service';
-import { Title } from '@angular/platform-browser';
 import { Injectable } from '@angular/core';
 import { SelectedAutocompleteItem } from 'ng-auto-complete';
 import { ToastService } from 'src/app/content/services/toast/toast.service';
 import { DayResume } from './../../content/models/day-resume';
 import { Candidate, LocationFound } from './../../content/models/location-found';
+import { ArcGisService } from './../../content/services/arc-gis/arc-gis.service';
 import { LocationFinderService } from './../../content/services/location/location-finder.service';
+import { TitleService } from './../../content/services/title/title.service';
 import { AutoLocateModel } from './auto-locate.model';
 import { SearchDB } from './search-db.model';
 
