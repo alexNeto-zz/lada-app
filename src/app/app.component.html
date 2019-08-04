@@ -1,4 +1,7 @@
 <app-header></app-header>
+<h1 [ngClass]="{ 'show-h1': !sourceQuantity, 'hide-h1': sourceQuantity }">
+  Veja e compare previsões de diversas fontes
+</h1>
 <app-tool-panel [sourceQuantity]="sourceQuantity"></app-tool-panel>
 <app-weather-list (sourceQuantity)="onForecast($event)"></app-weather-list>
 

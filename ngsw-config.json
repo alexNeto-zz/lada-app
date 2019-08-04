@@ -3,7 +3,7 @@
   "index": "/index.html",
   "assetGroups": [
     {
-      "name": "app",
+      "name": "lada-app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
@@ -29,13 +29,15 @@
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
-        "maxAge": "2d",
+        "maxAge": "1d",
         "timeout": "10s"
       }
     },
     {
       "name": "arcGis-api",
-      "urls": ["https://geocode.arcgis.com/**"],
+      "urls": [
+        "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/**"
+      ],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
