@@ -1,3 +1,6 @@
+import { ArcGisService } from './../../content/services/arc-gis/arc-gis.service';
+import { TitleService } from './../../content/services/title/title.service';
+import { Title } from '@angular/platform-browser';
 import { Injectable } from '@angular/core';
 import { SelectedAutocompleteItem } from 'ng-auto-complete';
 import { ToastService } from 'src/app/content/services/toast/toast.service';
@@ -21,9 +24,11 @@ export class SearchBO {
 
     constructor(
         private location: LocationFinderService,
+        private arcGis: ArcGisService,
         private autoLocateModel: AutoLocateModel,
         private searchDB: SearchDB,
-        private toast: ToastService
+        private toast: ToastService,
+        private title: TitleService
     ) {
         this.isLoading = false;
         this.isLoadingGPS = false;
@@ -48,7 +53,7 @@ export class SearchBO {
     }
 
     makeRequest(searchLocation, onSuccess): void {
-        this.location.findLocation(searchLocation)
+        this.arcGis.findLocation(searchLocation)
             .subscribe((data: LocationFound) => {
                 onSuccess(data);
                 this.locationFound = data;
@@ -71,17 +76,26 @@ export class SearchBO {
             this.isLoading = true;
             this.findWeatherResume(x, y);
         } catch (err) {
-            console.log(err);
+            // TODO - log de erros
+            this.title.setStemTitle();
         }
+    }
+
+    appendCityToTitle(x: number, y: number) {
+        this.arcGis.reverseLocation(x, y).subscribe(
+            (result) => this.title.appendToTitle(result.address.City),
+        );
     }
 
     public findWeatherResume(x: number, y: number) {
         this.searchDB.updateLocation(x, y);
-        this.location.findWeatherResume(x, y).subscribe((data: DayResume[]) => {
-            this.location.updateDayResumeList(data);
-            this.isLoading = false;
-            this.isLoadingGPS = false;
-        });
+        this.location.findWeatherResume(x, y).subscribe(
+            (data: DayResume[]) => {
+                this.location.updateDayResumeList(data);
+                this.isLoading = false;
+                this.isLoadingGPS = false;
+            });
+        this.appendCityToTitle(x, y);
     }
 
     getCandidates() {
