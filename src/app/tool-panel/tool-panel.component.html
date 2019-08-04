@@ -3,5 +3,9 @@
   class="light"
   [ngClass]="{ 'expanded-tool-panel': !sourceQuantity }"
 >
+  <h1 [ngClass]="{ 'show-h1': !sourceQuantity, 'hide-h1': sourceQuantity }">
+    Veja e compare previsões de diversas fontes
+  </h1>
   <app-search></app-search>
+  <div><!--placeholder--></div>
 </div>

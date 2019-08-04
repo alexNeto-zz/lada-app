@@ -10,7 +10,7 @@
 
 #tool-panel {
   @include tool-panel();
-  @include flex-box(row, center);
+  @include flex-box(column, space-evenly);
 }
 
 .expanded-tool-panel {
@@ -25,4 +25,15 @@
 
 .dark {
   @include dark-gradient();
+}
+
+.show-h1 {
+  font-family: $main-font;
+  color: $gray-5;
+  font-weight: 100;
+  font-size: 2rem;
+}
+
+.hide-h1 {
+  font-size: 0;
 }
