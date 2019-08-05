@@ -28,11 +28,13 @@
 }
 
 .show-h1 {
-  font-family: $main-font;
-  color: $gray-5;
-  font-weight: 100;
-  font-size: 2rem;
   padding: 0 1rem;
+  strong {
+    font-family: $main-font;
+    color: $white;
+    font-weight: 400;
+    font-size: 2rem;
+  }
 }
 
 .hide-h1 {
