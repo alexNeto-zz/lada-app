@@ -39,7 +39,6 @@ import { ToolPanelComponent } from './tool-panel/tool-panel.component';
     BrowserAnimationsModule,
     NgAutoCompleteModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
   providers: [],
