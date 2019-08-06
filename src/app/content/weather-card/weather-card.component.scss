@@ -68,15 +68,13 @@ $source-size: 768px;
   text-align: start;
   margin-left: 0.25em;
   color: $gray-4;
+  width: 100%;
   @media screen and (max-width: $source-size) {
     font-size: 1.5em;
-    font-weight: 200;
-    width: 100%;
   }
   @media screen and (max-width: 425px) {
     font-size: 1.25em;
     margin-left: 10%;
-    width: 100%;
   }
 }
 
