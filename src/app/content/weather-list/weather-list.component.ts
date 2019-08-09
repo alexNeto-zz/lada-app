@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { LocationFinderService } from '../services/location/location-finder.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class WeatherListComponent implements OnInit, OnDestroy {
   public sourceQuantity = new EventEmitter<number>();
   public sourceNames: string[];
   private countryAvailableList: Subject<string[]>;
+  private subscription: Subscription;
 
   constructor(private location: LocationFinderService) {
     this.sourceNames = [];
@@ -24,7 +25,7 @@ export class WeatherListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.countryAvailableList.subscribe((data: string[]) => {
+    this.subscription = this.countryAvailableList.subscribe((data: string[]) => {
       this.sourceNames = data;
       this.sourceQuantity.emit(this.sourceNames.length);
     },
@@ -35,6 +36,6 @@ export class WeatherListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.countryAvailableList.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgxIndexedDB } from 'ngx-indexed-db';
 import { from, Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,32 +32,42 @@ export class IndexeddbService {
   }
 
   create(storeName: string, value: object, key?: any) {
-    this.openDatabase(storeName).subscribe(
-      (_) => this.idb.add(storeName, value, key)
-    );
+    this.openDatabase(storeName)
+      .pipe(take(1))
+      .subscribe(
+        (_) => this.idb.add(storeName, value, key)
+      );
   }
 
   retrieve(storeName: string, key: any, callback, error) {
-    this.openDatabase(storeName).subscribe(
-      (_) => from(this.idb.getByKey(storeName, key)).subscribe(
-        (item) => callback(item),
+    this.openDatabase(storeName)
+      .pipe(take(1))
+      .subscribe(
+        (_) => from(this.idb.getByKey(storeName, key))
+          .pipe(take(1))
+          .subscribe(
+            (item) => callback(item),
+            (err) => error(err)
+          ),
         (err) => error(err)
-      ),
-      (err) => error(err)
-    );
+      );
   }
 
   update(storeName: string, value: object, key: any) {
-    this.openDatabase(storeName).subscribe(
-      (_) => {
-        this.idb.delete(storeName, key);
-        this.idb.add(storeName, value, key);
-      });
+    this.openDatabase(storeName)
+      .pipe(take(1))
+      .subscribe(
+        (_) => {
+          this.idb.delete(storeName, key);
+          this.idb.add(storeName, value, key);
+        });
   }
 
   delete(storeName: string, key: any) {
-    this.openDatabase(storeName).subscribe(
-      (_) => from(this.idb.delete(storeName, key))
-    );
+    this.openDatabase(storeName)
+      .pipe(take(1))
+      .subscribe(
+        (_) => from(this.idb.delete(storeName, key))
+      );
   }
 }

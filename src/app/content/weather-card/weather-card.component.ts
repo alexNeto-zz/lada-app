@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { Candidate } from './../interfaces/candidate';
 import { DayResume } from './../interfaces/day-resume';
 import { LocationFinderService } from './../services/location/location-finder.service';
@@ -23,7 +24,7 @@ export class WeatherCardComponent implements OnInit {
     this.location.findTodayWeatherByRegionAndCity(
       this.sourceName,
       this.candidate.attributes.Region,
-      this.candidate.attributes.City).subscribe(
+      this.candidate.attributes.City).pipe(take(1)).subscribe(
         (data: DayResume) => {
           this.dayResume = data;
         },

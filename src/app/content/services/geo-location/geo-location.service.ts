@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { ToastService } from '../toast/toast.service';
 
 @Injectable({
@@ -17,11 +18,13 @@ export class GeoLocationService {
     this.onBlock = onBlock;
     this.onFindLocation = onFindLocation;
     this.ask = ask;
-    from((navigator as any).permissions.query({ name: 'geolocation' })).subscribe(
-      (result: any) => {
-        this.locateIfGranted(result.state);
-      }
-    );
+    from((navigator as any).permissions.query({ name: 'geolocation' }))
+      .pipe(take(1))
+      .subscribe(
+        (result: any) => {
+          this.locateIfGranted(result.state);
+        }
+      );
   }
 
   locateIfGranted(state) {
