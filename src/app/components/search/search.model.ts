@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { SelectedAutocompleteItem } from 'ng-auto-complete';
 import { ToastService } from 'src/app/content/services/toast/toast.service';
-import { DayResume } from './../../content/models/day-resume';
-import { Candidate, LocationFound } from './../../content/models/location-found';
+import { DayResume } from '../../content/interfaces/day-resume';
+import { Candidate, LocationFound } from '../../content/interfaces/location-found';
 import { ArcGisService } from './../../content/services/arc-gis/arc-gis.service';
 import { LocationFinderService } from './../../content/services/location/location-finder.service';
 import { TitleService } from './../../content/services/title/title.service';
@@ -34,14 +34,18 @@ export class SearchBO {
         this.ask = false;
     }
 
-
     autoLocate(ask = false) {
         this.ask = ask;
         this.autoLocateModel.autoLocate((x: number, y: number) => {
             this.isLoadingGPS = true;
+            this.arcGis.reverseLocation(x, y).subscribe(
+
+            )
             this.findWeatherResume(x, y);
         }, this.onBlockLocation.bind(this), ask);
     }
+
+
 
     onBlockLocation() {
         this.isLoadingGPS = false;
@@ -87,14 +91,16 @@ export class SearchBO {
     }
 
 
-    // findWeatherResume(x: number, y: number) {
-    //     this.searchDB.updateLocation(x, y);
-    //     this.findListOfSourceForLocation(x, y);
-    // }
+    findSourceListForCountry() {
+        this.searchDB.updateLocation(this.candidate);
+        this.location.findSourceList(this.candidate.attributes.Country);
+    }
 
-    // findListOfSourceForLocation(x: number, y: number) {
 
-    // }
+    findWeatherResume(x: number, y: number) {
+        this.searchDB.updateLocation(x, y);
+        this.findListOfSourceForLocation(x, y);
+    }
 
     public findWeatherResume(x: number, y: number) {
         this.searchDB.updateLocation(x, y);

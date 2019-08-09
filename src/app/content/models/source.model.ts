@@ -1,11 +1,11 @@
-import { DayResume } from './day-resume';
+import { DayResume } from '../interfaces/day-resume';
 
 export class Source {
     dayResume: DayResume;
     votes: number;
 
-    constructor(dayResume: DayResume, votes?: number) {
-        this.dayResume = dayResume;
+    constructor(source: string, votes?: number) {
+        this.dayResume.source = source;
         this.votes = votes || 0;
     }
 

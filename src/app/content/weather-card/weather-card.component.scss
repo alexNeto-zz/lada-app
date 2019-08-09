@@ -84,7 +84,7 @@ $source-size: 768px;
   font-family: $main-font;
   font-weight: 200;
   font-size: 1.85em;
-  text-align: start;
+  text-align: flex-start;
   margin-left: 0.25em;
   color: $gray-4;
   width: 100%;
@@ -136,6 +136,6 @@ img {
 
 .min-max-aling {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }

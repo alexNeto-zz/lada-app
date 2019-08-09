@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
-import { SearchDB } from './search-db.model';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +9,7 @@ export class AutoLocateModel {
     private onBlock;
     private onFindLocation;
 
-    constructor(private searchDB: SearchDB) { }
+    constructor() { }
 
     autoLocate(onFindLocation, onBlock, ask = false) {
         this.onBlock = onBlock;
@@ -38,7 +37,6 @@ export class AutoLocateModel {
                 const x = position.coords.longitude;
                 const y = position.coords.latitude;
                 onFindLocation(x, y);
-                this.searchDB.updateLocation(x, y);
             }, () => { }, this.geoOptions());
         }
     }
