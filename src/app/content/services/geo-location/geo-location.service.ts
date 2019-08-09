@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
+import { ToastService } from '../toast/toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,26 +9,36 @@ export class GeoLocationService {
 
   private onBlock;
   private onFindLocation;
+  private ask: boolean;
 
-  constructor() { }
+  constructor(private toast: ToastService) { }
 
   autoLocate(onFindLocation, onBlock, ask = false) {
     this.onBlock = onBlock;
     this.onFindLocation = onFindLocation;
+    this.ask = ask;
     from((navigator as any).permissions.query({ name: 'geolocation' })).subscribe(
       (result: any) => {
-        this.locateIfGranted(result.state, ask);
+        this.locateIfGranted(result.state);
       }
     );
   }
 
-  locateIfGranted(state, ask) {
+  locateIfGranted(state) {
     if (state === 'denied') {
       this.onBlock();
-    } else if (state === 'granted' || ask) {
+      this.locationDenied();
+    } else if (state === 'granted' || this.ask) {
       this.locate();
     } else {
       this.onBlock();
+      this.locationDenied();
+    }
+  }
+
+  locationDenied() {
+    if (this.ask) {
+      this.toast.warning('A localização está bloqueada');
     }
   }
 

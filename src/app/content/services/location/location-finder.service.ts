@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Candidate } from './../../interfaces/candidate';
 
 
 @Injectable({
@@ -11,13 +12,19 @@ export class LocationFinderService {
     private baseUrl: string = environment.baseUrl;
 
     private countryAvailableList: Subject<string[]>;
+    private candidate: Subject<Candidate>;
 
     get getCountryAvailableList(): Subject<string[]> {
         return this.countryAvailableList;
     }
 
+    get getCandidate(): Subject<Candidate> {
+        return this.candidate;
+    }
+
     constructor(private http: HttpClient) {
         this.countryAvailableList = new Subject();
+        this.candidate = new Subject();
     }
 
     findSourceList(country: string): Observable<any> {
@@ -29,7 +36,10 @@ export class LocationFinderService {
     }
 
     updateCountryAvailableList(countryAvailableList: string[]): void {
-        console.log(countryAvailableList);
         this.countryAvailableList.next(countryAvailableList);
+    }
+
+    updateCandidate(candidate: Candidate): void {
+        this.candidate.next(candidate);
     }
 }

@@ -36,8 +36,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchBO.onInitSearch(false);
-    // this.searchBO.searchStoredLocation();
+    this.searchBO.autoLocate(false);
   }
 
   showLocations(searchLocation) {
@@ -66,7 +65,7 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    this.searchBO.search();
+    this.searchBO.findListOfSourceForLocation();
   }
 
   searchGPS(ask = false) {
