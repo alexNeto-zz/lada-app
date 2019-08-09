@@ -15,7 +15,7 @@ export const candidateToReverseCandidate =
                 Address: candidate.address
             }
         };
-    }
+    };
 
 export const reverseCandidateToCandidate = (reverseCandidate: ReverseCandidate): Candidate => {
     return {
@@ -30,4 +30,4 @@ export const reverseCandidateToCandidate = (reverseCandidate: ReverseCandidate):
         },
         address: reverseCandidate.address.Address,
     };
-}
+};
