@@ -82,9 +82,19 @@ export class SearchBO {
 
     appendCityToTitle(x: number, y: number) {
         this.arcGis.reverseLocation(x, y).subscribe(
-            (result) => this.title.appendToTitle(result.address.City),
+            (result) => { this.title.appendToTitle(result.address.City); console.log(result) },
         );
     }
+
+
+    // findWeatherResume(x: number, y: number) {
+    //     this.searchDB.updateLocation(x, y);
+    //     this.findListOfSourceForLocation(x, y);
+    // }
+
+    // findListOfSourceForLocation(x: number, y: number) {
+
+    // }
 
     public findWeatherResume(x: number, y: number) {
         this.searchDB.updateLocation(x, y);

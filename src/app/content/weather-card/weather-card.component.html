@@ -1,21 +1,23 @@
 <div id="weather-card" class="notification light">
   <div id="weather-primary-info">
-    <div id="weather-condition-container">
-      <div *ngIf="currentWeather != undefined">
+    <div
+      id="weather-condition-container"
+      [ngClass]="{ 'total-width': !currentWeather }"
+    >
+      <div *ngIf="currentWeather">
         <p id="weather-current-temperature">25ºC</p>
       </div>
       <div>
-        {{ source.dayResume.weatherCondition }}
-        <!-- <img
+        <img
           id="weather-condition-icon"
           src="/assets/svg/weather/animated/day.svg"
           alt="weather condition"
-        /> -->
+        />
       </div>
     </div>
     <div class="line"></div>
     <div id="weather-today-condition">
-      <div>
+      <div class="min-max-aling">
         <img
           src="/assets/svg/up-arrow.svg"
           alt="icone para temperatura máxima"
@@ -23,7 +25,7 @@
         />
         {{ source.dayResume.maximumTemperature }}ºC
       </div>
-      <div>
+      <div class="min-max-aling">
         <img
           src="/assets/svg/down-arrow.svg"
           alt="icone para temperatura mínima"
@@ -31,7 +33,7 @@
         />
         {{ source.dayResume.minimumTemperature }}ºC
       </div>
-      <div>
+      <div class="min-max-aling">
         <img
           src="/assets/svg/drop.svg"
           alt="icone para probabilidade de chuva"
