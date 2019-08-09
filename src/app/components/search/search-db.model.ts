@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import { IndexeddbService } from 'src/app/content/services/indexeddb/indexeddb.service';
+import { Candidate } from './../../content/interfaces/candidate';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class SearchDB {
 
-    constructor(private idb: IndexeddbService) {    }
+    private dbName: string;
+    constructor(private idb: IndexeddbService) {
+        this.dbName = 'candidate';
+    }
 
-    updateLocation(x: number, y: number) {
+    updateLocation(candidate: Candidate) {
         const key = 1;
-        this.idb.update('location', { x: x, y: y }, key);
+        this.idb.update(this.dbName, candidate, key);
     }
 
     getLocation(success, error) {
-        this.idb.retrieve('location', 1, success, error);
+        this.idb.retrieve(this.dbName, 1, success, error);
     }
 }

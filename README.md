@@ -1,6 +1,8 @@
 # LadaApp
 
 [![Build Status](https://travis-ci.org/alexNeto/lada-app.svg?branch=master)](https://travis-ci.org/alexNeto/lada-app)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4e74ff8443954aaba32dfb4e317e69ba)](https://www.codacy.com/app/alexNeto/lada-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alexNeto/lada-app&amp;utm_campaign=Badge_Grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e8605ab6a9149458dbea/maintainability)](https://codeclimate.com/github/alexNeto/lada-app/maintainability)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 

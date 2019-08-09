@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CreateNewAutocompleteGroup, NgAutoCompleteComponent, SelectedAutocompleteItem } from 'ng-auto-complete';
-import { LocationFound } from './../../content/models/location-found';
+import { LocationFound } from '../../content/interfaces/location-found';
 import { SearchBO } from './search.model';
 
 @Component({
@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchBO.searchStoredLocation();
+    this.searchBO.autoLocate(false);
   }
 
   showLocations(searchLocation) {
@@ -65,7 +65,7 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    this.searchBO.search();
+    this.searchBO.findListOfSourceForLocation();
   }
 
   searchGPS(ask = false) {

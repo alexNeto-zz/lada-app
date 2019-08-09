@@ -5,8 +5,8 @@ $source-size: 768px;
 .line {
   width: 1px;
   height: 169px;
-  background-color: rgba($color: $gray-4, $alpha: 0.6);
   align-self: center;
+  background: transparent;
 }
 
 #weather-card {
@@ -31,7 +31,8 @@ $source-size: 768px;
 #weather-primary-info {
   @include flex-box(row, baseline);
   @media screen and (max-width: 425px) {
-    align-items: end;
+    align-items: first baseline;
+    margin-bottom: -4rem;
     justify-content: center;
     width: 100%;
   }
@@ -48,24 +49,40 @@ $source-size: 768px;
 }
 
 #weather-condition-container {
-  @include flex-box(column, space-between);
-  margin-right: 2em;
+  @include flex-box(column, space-evenly);
+  height: auto;
+  align-self: center;
+  justify-self: self-end;
+  margin-top: -2rem;
+  margin-right: 1rem;
+  align-self: normal;
   @media screen and (max-width: 425px) {
     font-size: 1em;
   }
 }
 
-#weather-condition-icon {
-  vertical-align: middle;
+.total-width {
   width: 100%;
 }
 
+#weather-condition-icon {
+  vertical-align: middle;
+  margin-top: -2.5rem;
+  margin-bottom: -3rem;
+  width: 100%;
+  min-width: 10rem;
+  @media screen and (max-width: 425px) {
+    margin-top: -4rem;
+    margin-bottom: 0rem;
+  }
+}
+
 #weather-today-condition {
-  @include flex-box(column, space-evenly);
+  @include flex-box(column, space-around);
   font-family: $main-font;
   font-weight: 200;
   font-size: 1.85em;
-  text-align: start;
+  text-align: flex-start;
   margin-left: 0.25em;
   color: $gray-4;
   width: 100%;
@@ -100,7 +117,7 @@ $source-size: 768px;
     font-size: 3em;
   }
   @media screen and (max-width: 320px) {
-    font-size: 1.25em;
+    font-size: 2.25em;
   }
 }
 
@@ -111,6 +128,18 @@ $source-size: 768px;
 }
 
 img {
-  width: 10%;
+  width: 15%;
+  min-width: 20px;
   height: auto;
+}
+
+.min-max-aling {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.placeholder {
+  width: 100%;
+  height: 96px;
 }

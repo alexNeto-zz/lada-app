@@ -1,43 +1,51 @@
-<div id="weather-card" class="notification light">
+<div
+  *ngIf="dayResume; else placeholder"
+  id="weather-card"
+  class="notification light"
+>
   <div id="weather-primary-info">
-    <div id="weather-condition-container">
-      <div *ngIf="currentWeather != undefined">
+    <div
+      id="weather-condition-container"
+      [ngClass]="{ 'total-width': !currentWeather }"
+    >
+      <div *ngIf="currentWeather">
         <p id="weather-current-temperature">25ºC</p>
       </div>
       <div>
-        {{ source.dayResume.weatherCondition }}
-        <!-- <img
+        <img
           id="weather-condition-icon"
-          src="/assets/svg/weather/animated/day.svg"
+          src="/assets/svg/weather/animated/{{
+            dayResume.weatherCondition
+          }}.svg"
           alt="weather condition"
-        /> -->
+        />
       </div>
     </div>
     <div class="line"></div>
     <div id="weather-today-condition">
-      <div>
+      <div class="min-max-aling">
         <img
           src="/assets/svg/up-arrow.svg"
           alt="icone para temperatura máxima"
           srcset=""
         />
-        {{ source.dayResume.maximumTemperature }}ºC
+        {{ dayResume.maximumTemperature }}ºC
       </div>
-      <div>
+      <div class="min-max-aling">
         <img
           src="/assets/svg/down-arrow.svg"
           alt="icone para temperatura mínima"
           srcset=""
         />
-        {{ source.dayResume.minimumTemperature }}ºC
+        {{ dayResume.minimumTemperature }}ºC
       </div>
-      <div>
+      <div class="min-max-aling">
         <img
           src="/assets/svg/drop.svg"
           alt="icone para probabilidade de chuva"
           srcset=""
         />
-        {{ source.dayResume.rainProbability }}
+        {{ dayResume.rainProbability }}%
       </div>
     </div>
   </div>
@@ -45,13 +53,19 @@
     <div>
       <p id="weather-card-source">
         <a
-          href="{{ source.dayResume.link }}"
+          href="{{ dayResume.link.site }}"
           target="_blank"
           rel="noopener noreferrer"
-          >{{ source.dayResume.source }}</a
+          >{{ dayResume.source }}</a
         >
       </p>
     </div>
     <div><app-vote></app-vote></div>
   </div>
 </div>
+
+<ng-template #placeholder>
+  <div id="weather-card" class="notification light">
+    <a class="placeholder button is-loading is-white"></a>
+  </div>
+</ng-template>
