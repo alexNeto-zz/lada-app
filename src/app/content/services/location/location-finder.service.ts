@@ -12,34 +12,27 @@ export class LocationFinderService {
     private baseUrl: string = environment.baseUrl;
 
     private countryAvailableList: Subject<string[]>;
-    private candidate: Subject<Candidate>;
+    public candidate: Candidate;
 
     get getCountryAvailableList(): Subject<string[]> {
         return this.countryAvailableList;
     }
 
-    get getCandidate(): Subject<Candidate> {
-        return this.candidate;
-    }
-
     constructor(private http: HttpClient) {
         this.countryAvailableList = new Subject();
-        this.candidate = new Subject();
     }
 
     findSourceList(country: string): Observable<any> {
         return this.http.get(`${this.baseUrl}/source/list-available/${country}`);
     }
 
-    findWeatherResume(longitude: number, latitude: number): Observable<object> {
-        return this.http.get(`${this.baseUrl}/today_resume/list/${latitude}/${longitude}`);
+    findTodayWeatherByRegionAndCity(source: string, region: string, city: string): Observable<any> {
+        return this.http.get(`${this.baseUrl}/${source}/today/${region}/${city}`);
     }
 
     updateCountryAvailableList(countryAvailableList: string[]): void {
         this.countryAvailableList.next(countryAvailableList);
     }
 
-    updateCandidate(candidate: Candidate): void {
-        this.candidate.next(candidate);
-    }
+
 }

@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Source } from '../models/source.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Candidate } from './../interfaces/candidate';
+import { DayResume } from './../interfaces/day-resume';
+import { LocationFinderService } from './../services/location/location-finder.service';
 
 @Component({
   selector: 'app-weather-card',
@@ -7,12 +9,30 @@ import { Source } from '../models/source.model';
   styleUrls: ['./weather-card.component.scss']
 })
 export class WeatherCardComponent implements OnInit {
-  @Input() source: Source;
+  @Input() sourceName: string;
+  @Output() removeItem = new EventEmitter<string>();
   public currentWeather: string;
+  public dayResume: DayResume;
+  private candidate: Candidate;
 
-  constructor() {
+  constructor(private location: LocationFinderService) {
+    this.candidate = this.location.candidate;
   }
 
   ngOnInit() {
+    this.location.findTodayWeatherByRegionAndCity(
+      this.sourceName,
+      this.candidate.attributes.Region,
+      this.candidate.attributes.City).subscribe(
+        (data: DayResume) => {
+          this.dayResume = data;
+        },
+        () => {
+          this.removeItem.emit(this.sourceName);
+        });
   }
 }
+
+
+
+

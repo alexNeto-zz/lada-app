@@ -1,9 +1,15 @@
 export interface DayResume {
     weatherCondition: string;
-    maximumTemperature: string;
-    minimumTemperature: string;
-    rainProbability: string;
+    currentWeather: number;
+    maximumTemperature: number;
+    minimumTemperature: number;
+    rainProbability: number;
     source: string;
     sourceLogo: string;
-    link: string;
+    link: Link;
+}
+
+interface Link {
+    site?: string;
+    api?: string;
 }

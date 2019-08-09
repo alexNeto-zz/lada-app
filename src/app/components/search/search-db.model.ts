@@ -8,14 +8,17 @@ import { Candidate } from './../../content/interfaces/candidate';
 })
 export class SearchDB {
 
-    constructor(private idb: IndexeddbService) { }
+    private dbName: string;
+    constructor(private idb: IndexeddbService) {
+        this.dbName = 'candidate';
+    }
 
     updateLocation(candidate: Candidate) {
         const key = 1;
-        this.idb.update('location', candidate, key);
+        this.idb.update(this.dbName, candidate, key);
     }
 
     getLocation(success, error) {
-        this.idb.retrieve('location', 1, success, error);
+        this.idb.retrieve(this.dbName, 1, success, error);
     }
 }

@@ -37,7 +37,7 @@ export class SearchBO {
 
     setCandidate(candidate: Candidate) {
         this.candidate = candidate;
-        this.location.updateCandidate(candidate);
+        this.location.candidate = candidate;
     }
 
     autoLocate(askGeoLocationPermission: boolean) {
@@ -82,6 +82,7 @@ export class SearchBO {
         this.location.findSourceList(this.candidate.attributes.Country).subscribe(
             (data: string[]) => {
                 this.location.updateCountryAvailableList(data);
+                this.setCandidate(this.candidate);
                 this.isLoading = false;
                 this.isLoadingGPS = false;
             },
@@ -93,7 +94,7 @@ export class SearchBO {
         this.arcGis.findLocation(searchLocation)
             .subscribe((data: LocationFound) => {
                 onSuccess(data);
-                this.setCandidate(data.candidates[0])
+                this.candidate = data.candidates[0];
                 this.searchDB.updateLocation(this.candidate);
             });
     }
@@ -108,7 +109,9 @@ export class SearchBO {
 
     appendCityToTitle(x: number, y: number) {
         this.arcGis.reverseLocation(x, y).subscribe(
-            (result) => { this.title.appendToTitle(result.address.City); console.log(result) },
+            (result) => {
+                this.title.appendToTitle(result.address.City); console.log(result);
+            },
         );
     }
 

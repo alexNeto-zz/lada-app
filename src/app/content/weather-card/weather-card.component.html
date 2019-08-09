@@ -1,4 +1,8 @@
-<div id="weather-card" class="notification light">
+<div
+  *ngIf="dayResume; else placeholder"
+  id="weather-card"
+  class="notification light"
+>
   <div id="weather-primary-info">
     <div
       id="weather-condition-container"
@@ -10,7 +14,9 @@
       <div>
         <img
           id="weather-condition-icon"
-          src="/assets/svg/weather/animated/day.svg"
+          src="/assets/svg/weather/animated/{{
+            dayResume.weatherCondition
+          }}.svg"
           alt="weather condition"
         />
       </div>
@@ -23,7 +29,7 @@
           alt="icone para temperatura máxima"
           srcset=""
         />
-        {{ source.dayResume.maximumTemperature }}ºC
+        {{ dayResume.maximumTemperature }}ºC
       </div>
       <div class="min-max-aling">
         <img
@@ -31,7 +37,7 @@
           alt="icone para temperatura mínima"
           srcset=""
         />
-        {{ source.dayResume.minimumTemperature }}ºC
+        {{ dayResume.minimumTemperature }}ºC
       </div>
       <div class="min-max-aling">
         <img
@@ -39,7 +45,7 @@
           alt="icone para probabilidade de chuva"
           srcset=""
         />
-        {{ source.dayResume.rainProbability }}
+        {{ dayResume.rainProbability }}
       </div>
     </div>
   </div>
@@ -47,13 +53,19 @@
     <div>
       <p id="weather-card-source">
         <a
-          href="{{ source.dayResume.link }}"
+          href="{{ dayResume.link.site }}"
           target="_blank"
           rel="noopener noreferrer"
-          >{{ source.dayResume.source }}</a
+          >{{ dayResume.source }}</a
         >
       </p>
     </div>
     <div><app-vote></app-vote></div>
   </div>
 </div>
+
+<ng-template #placeholder>
+  <div id="weather-card" class="notification light">
+    <a class="placeholder button is-loading is-white"></a>
+  </div>
+</ng-template>

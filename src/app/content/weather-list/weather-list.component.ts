@@ -1,6 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Source } from '../models/source.model';
 import { LocationFinderService } from '../services/location/location-finder.service';
 
 @Component({
@@ -8,35 +7,30 @@ import { LocationFinderService } from '../services/location/location-finder.serv
   templateUrl: './weather-list.component.html',
   styleUrls: ['./weather-list.component.scss']
 })
-export class WeatherListComponent implements OnInit {
+export class WeatherListComponent implements OnInit, OnDestroy {
 
   @Output()
   public sourceQuantity = new EventEmitter<number>();
-  sources: Source[];
-  private availableCountry: string[];
+  public sourceNames: string[];
   private countryAvailableList: Subject<string[]>;
 
   constructor(private location: LocationFinderService) {
-    this.sources = [];
-    this.availableCountry = [];
+    this.sourceNames = [];
     this.countryAvailableList = this.location.getCountryAvailableList;
-    this.countryAvailableList.subscribe(data => {
-      this.availableCountry = data;
-      this.createSourcesList();
-    });
+  }
+
+  removeItem(sourceNameToRemove: string) {
+    this.sourceNames = this.sourceNames.filter(item => item !== sourceNameToRemove);
   }
 
   ngOnInit() {
-    this.sources.sort((a: Source, b: Source) => b.votes - a.votes);
-  }
-
-  createSourcesList(): Source[] {
-    this.sources = [];
-    this.availableCountry.forEach(item => {
-      this.sources.push(new Source(item, 3));
+    this.countryAvailableList.subscribe((data: string[]) => {
+      this.sourceNames = data;
+      this.sourceQuantity.emit(this.sourceNames.length);
     });
-    this.sourceQuantity.emit(this.sources.length);
-    return this.sources;
   }
 
+  ngOnDestroy() {
+    this.countryAvailableList.unsubscribe();
+  }
 }
