@@ -36,7 +36,8 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchBO.searchStoredLocation();
+    this.searchBO.onInitSearch(false);
+    // this.searchBO.searchStoredLocation();
   }
 
   showLocations(searchLocation) {

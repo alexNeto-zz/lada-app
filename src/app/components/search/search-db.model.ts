@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IndexeddbService } from 'src/app/content/services/indexeddb/indexeddb.service';
-import { Candidate } from '../../content/interfaces/location-found';
+import { Candidate } from './../../content/interfaces/candidate';
+
 
 @Injectable({
     providedIn: 'root'

@@ -28,7 +28,8 @@ export class LocationFinderService {
         return this.http.get(`${this.baseUrl}/today_resume/list/${latitude}/${longitude}`);
     }
 
-    updateDayResumeList(countryAvailableList: string[]): void {
+    updateCountryAvailableList(countryAvailableList: string[]): void {
+        console.log(countryAvailableList);
         this.countryAvailableList.next(countryAvailableList);
     }
 }

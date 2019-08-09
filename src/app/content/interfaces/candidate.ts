@@ -2,9 +2,9 @@
 export interface Candidate {
     address: string;
     location: Location;
-    score: number;
+    score?: number;
     attributes: Attributes;
-    extent: Extent;
+    extent?: Extent;
 }
 
 interface Location {

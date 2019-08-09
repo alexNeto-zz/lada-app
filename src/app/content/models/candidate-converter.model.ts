@@ -2,29 +2,37 @@ import { ReverseCandidate } from '../interfaces/reverse-candidate';
 import { Candidate } from './../interfaces/candidate';
 
 export class CandidateConverter {
-    private candidate: Candidate;
-    private reverseCandidate: ReverseCandidate;
 
     constructor() {
     }
 
     candidateToReverseCandidate(candidate: Candidate): ReverseCandidate {
-        this.reverseCandidate.location.x = candidate.location.x;
-        this.reverseCandidate.location.y = candidate.location.y;
-        this.reverseCandidate.address.City = candidate.attributes.City;
-        this.reverseCandidate.address.Region = candidate.attributes.Region;
-        this.reverseCandidate.address.CountryCode = candidate.attributes.Country;
-        this.reverseCandidate.address.Address = this.candidate.address;
-        return this.reverseCandidate;
+        return {
+            location: {
+                x: candidate.location.x,
+                y: candidate.location.y
+            },
+            address: {
+                City: candidate.attributes.City,
+                Region: candidate.attributes.Region,
+                CountryCode: candidate.attributes.Country,
+                Address: candidate.address
+            }
+        };
     }
 
     reverseCandidateToCandidate(reverseCandidate: ReverseCandidate): Candidate {
-        this.candidate.location.x = reverseCandidate.location.x;
-        this.candidate.location.y = reverseCandidate.location.y;
-        this.candidate.attributes.City = reverseCandidate.address.City;
-        this.candidate.attributes.Region = reverseCandidate.address.Region;
-        this.candidate.attributes.Country = reverseCandidate.address.CountryCode;
-        this.candidate.address = reverseCandidate.address.Address;
-        return this.candidate;
+        return {
+            location: {
+                x: reverseCandidate.location.x,
+                y: reverseCandidate.location.y
+            },
+            attributes: {
+                City: reverseCandidate.address.City,
+                Region: reverseCandidate.address.Region,
+                Country: reverseCandidate.address.CountryCode
+            },
+            address: reverseCandidate.address.Address,
+        };
     }
 }
