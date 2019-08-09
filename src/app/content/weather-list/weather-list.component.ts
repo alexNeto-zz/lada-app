@@ -27,7 +27,11 @@ export class WeatherListComponent implements OnInit, OnDestroy {
     this.countryAvailableList.subscribe((data: string[]) => {
       this.sourceNames = data;
       this.sourceQuantity.emit(this.sourceNames.length);
-    });
+    },
+      () => {
+        this.sourceQuantity.emit(0);
+        this.sourceNames = [];
+      });
   }
 
   ngOnDestroy() {

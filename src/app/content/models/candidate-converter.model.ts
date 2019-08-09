@@ -1,12 +1,8 @@
 import { ReverseCandidate } from '../interfaces/reverse-candidate';
 import { Candidate } from './../interfaces/candidate';
 
-export class CandidateConverter {
-
-    constructor() {
-    }
-
-    candidateToReverseCandidate(candidate: Candidate): ReverseCandidate {
+export const candidateToReverseCandidate =
+    (candidate: Candidate): ReverseCandidate => {
         return {
             location: {
                 x: candidate.location.x,
@@ -21,18 +17,17 @@ export class CandidateConverter {
         };
     }
 
-    reverseCandidateToCandidate(reverseCandidate: ReverseCandidate): Candidate {
-        return {
-            location: {
-                x: reverseCandidate.location.x,
-                y: reverseCandidate.location.y
-            },
-            attributes: {
-                City: reverseCandidate.address.City,
-                Region: reverseCandidate.address.Region,
-                Country: reverseCandidate.address.CountryCode
-            },
-            address: reverseCandidate.address.Address,
-        };
-    }
+export const reverseCandidateToCandidate = (reverseCandidate: ReverseCandidate): Candidate => {
+    return {
+        location: {
+            x: reverseCandidate.location.x,
+            y: reverseCandidate.location.y
+        },
+        attributes: {
+            City: reverseCandidate.address.City,
+            Region: reverseCandidate.address.Region,
+            Country: reverseCandidate.address.CountryCode
+        },
+        address: reverseCandidate.address.Address,
+    };
 }
