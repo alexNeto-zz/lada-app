@@ -10,6 +10,11 @@ export interface DayResume {
 }
 
 interface Link {
-    site?: string;
-    api?: string;
+    site?: Uri;
+    api?: Uri;
+}
+
+interface Uri {
+    address: string;
+    params: string;
 }

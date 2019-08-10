@@ -1,3 +1,3 @@
-<div class="container" *ngFor="let sourceName of sourceNames">
-  <app-weather-card (removeItem)="removeItem($event)"  [sourceName]="sourceName"></app-weather-card>
+<div class="container" *ngFor="let dayResume of dayResumeList">
+  <app-weather-card [dayResume]="dayResume"></app-weather-card>
 </div>

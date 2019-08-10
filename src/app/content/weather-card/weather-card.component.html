@@ -6,9 +6,9 @@
   <div id="weather-primary-info">
     <div
       id="weather-condition-container"
-      [ngClass]="{ 'total-width': !currentWeather }"
+      [ngClass]="{ 'total-width': !dayResume.currentWeather }"
     >
-      <div *ngIf="currentWeather">
+      <div *ngIf="dayResume.currentWeather">
         <p id="weather-current-temperature">25ºC</p>
       </div>
       <div>
@@ -53,11 +53,11 @@
     <div>
       <p id="weather-card-source">
         <a
-          href="{{ dayResume.link.site }}"
+          href="{{ dayResume.link.site.address }}"
           target="_blank"
           rel="noopener noreferrer"
-          >{{ dayResume.source }}</a
-        >
+          >{{ dayResume.source }}
+        </a>
       </p>
     </div>
     <div><app-vote></app-vote></div>

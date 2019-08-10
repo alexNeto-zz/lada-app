@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SelectedAutocompleteItem } from 'ng-auto-complete';
 import { take } from 'rxjs/operators';
 import { ReverseCandidate } from 'src/app/content/interfaces/reverse-candidate';
+import { Sourcelist } from 'src/app/content/interfaces/sourcelist';
 import { ToastService } from 'src/app/content/services/toast/toast.service';
 import { LocationFound } from '../../content/interfaces/location-found';
 import { Candidate } from './../../content/interfaces/candidate';
@@ -38,7 +39,7 @@ export class SearchBO {
 
     setCandidate(candidate: Candidate) {
         this.candidate = candidate;
-        this.location.candidate = candidate;
+        this.location.updateCandidate(candidate);
     }
 
     autoLocate(askGeoLocationPermission: boolean) {
@@ -84,16 +85,24 @@ export class SearchBO {
     findListOfSourceForLocation() {
         this.isLoading = true;
         this.testIfOffline();
+        if (this.candidate === undefined) {
+            this.isLoading = false;
+            this.isLoadingGPS = false;
+            return;
+        }
         this.location.findSourceList(this.candidate.attributes.Country)
             .pipe(take(1))
             .subscribe(
-                (data: string[]) => {
+                (data: Sourcelist[]) => {
                     this.location.updateCountryAvailableList(data);
                     this.setCandidate(this.candidate);
                     this.isLoading = false;
                     this.isLoadingGPS = false;
                 },
-                () => { }
+                () => {
+                    this.isLoading = false;
+                    this.isLoadingGPS = false;
+                }
             );
     }
 
