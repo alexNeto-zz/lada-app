@@ -59,7 +59,7 @@ export class WeatherListComponent implements OnInit, OnDestroy {
       mergeMap(source => <Observable<DayResume>>this.buildRequest(source, candidate))
     ).subscribe(
       (dayResume: DayResume) => {
-        this.dayResumeList.unshift(dayResume)
+        this.dayResumeList.unshift(dayResume);
       },
       () => { }
     ));
