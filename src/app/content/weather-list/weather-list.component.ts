@@ -4,6 +4,7 @@ import { mergeMap, take } from 'rxjs/operators';
 import { Sourcelist } from '../interfaces/sourcelist';
 import { LocationFinderService } from '../services/location/location-finder.service';
 import { Candidate } from './../interfaces/candidate';
+import { Card } from './../interfaces/card';
 import { DayResume } from './../interfaces/day-resume';
 import { TitleService } from './../services/title/title.service';
 
@@ -19,12 +20,13 @@ export class WeatherListComponent implements OnInit, OnDestroy {
   public sourceList: Sourcelist[];
   private countryAvailableList: Subject<Sourcelist[]>;
   private subscription: Subscription[];
-  public dayResumeList: DayResume[];
+  public cardList: Card[];
+  public candidate: Candidate;
 
   constructor(private location: LocationFinderService, private title: TitleService) {
     this.subscription = [];
     this.sourceList = [];
-    this.dayResumeList = [];
+    this.cardList = [];
     this.countryAvailableList = this.location.getCountryAvailableList;
   }
 
@@ -46,36 +48,41 @@ export class WeatherListComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe(
         (data: Candidate) => {
-          this.makeRequest(data);
+          this.candidate = data;
+          this.makeRequest();
           this.title.appendToTitle(data.attributes.City);
         },
         () => { }
       );
   }
 
-  makeRequest(candidate: Candidate) {
-    this.dayResumeList = [];
+  makeRequest() {
+    this.cardList = this.sourceList.map(i => undefined);
     this.subscription.push(from(this.sourceList).pipe(
-      mergeMap(source => <Observable<DayResume>>this.buildRequest(source, candidate))
+      mergeMap(source => <Observable<DayResume>>this.buildRequest(source))
     ).subscribe(
       (dayResume: DayResume) => {
-        this.dayResumeList.unshift(dayResume);
+        const card = {
+          dayResume: dayResume,
+          location: `${this.candidate.attributes.Region}:${this.candidate.attributes.City}`
+        };
+        this.cardList.pop();
+        this.cardList.unshift(card);
       },
-      () => { }
+      () => this.cardList.pop()
     ));
   }
 
-  buildRequest(source: Sourcelist, candidate: Candidate): Observable<any> {
+  buildRequest(source: Sourcelist): Observable<any> {
     if (source.params === 'x:y') {
-      return this.location.findTodayWeather(source.source, candidate.location.x, candidate.location.y);
+      return this.location.findTodayWeather(source.source, this.candidate.location.x, this.candidate.location.y);
     } else {
-      return this.location.findTodayWeather(source.source, candidate.attributes.Region, candidate.attributes.City);
+      return this.location.findTodayWeather(source.source, this.candidate.attributes.Region, this.candidate.attributes.City);
     }
   }
 
   ngOnDestroy() {
-    this.subscription.forEach(s => {
-      s.unsubscribe();
-    });
+    this.subscription.forEach(s => s.unsubscribe());
+    this.sourceQuantity.unsubscribe();
   }
 }

@@ -96,14 +96,15 @@ $source-size: 768px;
 }
 
 #weather-card-source {
-  font-family: $main-font;
-  font-weight: 200;
-  font-size: 1.85em;
   text-align: end;
-  color: $gray-4;
-  @media screen and (max-width: $source-size) {
-    font-size: 1.25em;
-    text-align: start;
+  a {
+    color: $gray-4;
+    font-family: $main-font;
+    font-weight: 200;
+    @media screen and (max-width: $source-size) {
+      font-size: 1.25em;
+      text-align: start;
+    }
   }
 }
 

@@ -4,7 +4,7 @@
   "assetGroups": [
     {
       "name": "lada-app",
-      "installMode": "prefetch",
+      "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
         "files": ["/favicon.ico", "/index.html", "/*.css", "/*.js", "/*.svg"]
@@ -26,6 +26,7 @@
     {
       "name": "lada-api",
       "urls": ["https://lada-api.herokuapp.com/**"],
+      "version": 2,
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
