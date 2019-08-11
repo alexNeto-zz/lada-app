@@ -33,8 +33,8 @@ export class WeatherCardComponent implements OnInit {
     this.location.vote(this.card.dayResume.source, this.card.location, vote)
       .pipe(take(1))
       .subscribe(
-        (vote: Vote) => {
-          this.vote = vote;
+        (voteResult: Vote) => {
+          this.vote = voteResult;
           this.loadingOff();
         },
         () => this.loadingOff()

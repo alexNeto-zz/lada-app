@@ -23,7 +23,7 @@ export class VoteComponent implements OnDestroy {
       source_name: 'string',
       up_vote: 12,
       down_vote: 9,
-    }
+    };
   }
 
   get quantity() {
@@ -43,7 +43,7 @@ export class VoteComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.makeVote.unsubscribe()
+    this.makeVote.unsubscribe();
   }
 
 }
