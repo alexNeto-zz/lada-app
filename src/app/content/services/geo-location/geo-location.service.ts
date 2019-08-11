@@ -28,6 +28,7 @@ export class GeoLocationService {
   }
 
   locateIfGranted(state) {
+
     if (state === 'denied') {
       this.onBlock();
       this.locationDenied();

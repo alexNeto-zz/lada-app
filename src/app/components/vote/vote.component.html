@@ -1,5 +1,15 @@
 <div id="vote-component">
-  <a class="button is-primary is-rounded"><i class="fas fa-thumbs-up"></i></a>
-  <p>142</p>
-  <a class="button is-danger is-rounded"><i class="fas fa-thumbs-down"></i></a>
+  <a
+    [ngClass]="{ 'is-loading': isLoadingUpVote }"
+    class="button is-primary is-rounded is-small"
+    (click)="onUpVote()"
+    ><i class="fas fa-thumbs-up"></i
+  ></a>
+  <p>{{ quantity }}</p>
+  <a
+    [ngClass]="{ 'is-loading': isLoadingDownVote }"
+    class="button is-danger is-rounded is-small"
+    (click)="onDownVote()"
+    ><i class="fas fa-thumbs-down"></i
+  ></a>
 </div>

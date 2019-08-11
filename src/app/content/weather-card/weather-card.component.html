@@ -1,5 +1,5 @@
 <div
-  *ngIf="dayResume; else placeholder"
+  *ngIf="card; else placeholder"
   id="weather-card"
   class="notification light"
 >
@@ -9,7 +9,7 @@
       [ngClass]="{ 'total-width': !dayResume.currentWeather }"
     >
       <div *ngIf="dayResume.currentWeather">
-        <p id="weather-current-temperature">25ºC</p>
+        <p id="weather-current-temperature">{{ dayResume.currentWeather }}ºC</p>
       </div>
       <div>
         <img
@@ -29,7 +29,7 @@
           alt="icone para temperatura máxima"
           srcset=""
         />
-        {{ dayResume.maximumTemperature }}ºC
+        <p>{{ dayResume.maximumTemperature }}ºC</p>
       </div>
       <div class="min-max-aling">
         <img
@@ -37,7 +37,7 @@
           alt="icone para temperatura mínima"
           srcset=""
         />
-        {{ dayResume.minimumTemperature }}ºC
+        <p>{{ dayResume.minimumTemperature }}ºC</p>
       </div>
       <div class="min-max-aling">
         <img
@@ -45,7 +45,7 @@
           alt="icone para probabilidade de chuva"
           srcset=""
         />
-        {{ dayResume.rainProbability }}%
+        <p>{{ dayResume.rainProbability }}%</p>
       </div>
     </div>
   </div>
@@ -56,11 +56,19 @@
           href="{{ dayResume.link.site.address }}"
           target="_blank"
           rel="noopener noreferrer"
+          class="button is-white is-large"
           >{{ dayResume.source }}
         </a>
       </p>
     </div>
-    <div><app-vote></app-vote></div>
+    <div>
+      <app-vote
+        [vote]="vote"
+        [isLoadingUpVote]="isLoadingUpVote"
+        [isLoadingDownVote]="isLoadingDownVote"
+        (makeVote)="onVote($event)"
+      ></app-vote>
+    </div>
   </div>
 </div>
 

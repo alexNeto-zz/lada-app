@@ -36,6 +36,17 @@ export class LocationFinderService {
         return this.http.get(`${this.baseUrl}/${source}/today/${arg1}/${arg2}`);
     }
 
+    findVotes(source_name: string, location: string): Observable<any> {
+        return this.http.get(`${this.baseUrl}/vote_of/${location}/source/${source_name}`);
+    }
+
+    vote(source_name: string, location: string, vote: boolean): Observable<any> {
+        return this.http.put(`${this.baseUrl}/vote_of/${location}/source/${source_name}`, {
+            up_vote: vote,
+            down_vote: !vote
+        });
+    }
+
     updateCountryAvailableList(countryAvailableList: Sourcelist[]): void {
         this.countryAvailableList.next(countryAvailableList);
     }
