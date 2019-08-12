@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
     };
   }
 
+  get temperatureScale() {
+    return this.settings.temperatureScale;
+  }
+
   ngOnInit() {
     this.settingsSetup();
   }

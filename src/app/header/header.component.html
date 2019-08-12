@@ -58,8 +58,8 @@
         <a
           class="button  is-primary is-active"
           [ngClass]="{
-            'is-active': settings.temperatureScale == 'C',
-            'is-inverted': settings.temperatureScale != 'C'
+            'is-active': temperatureScale == 'C',
+            'is-inverted': temperatureScale != 'C'
           }"
           (click)="toggleTemperatureScale('C')"
           >ºC</a
@@ -67,8 +67,8 @@
         <a
           class="button is-primary  is-inverted"
           [ngClass]="{
-            'is-active': settings.temperatureScale == 'F',
-            'is-inverted': settings.temperatureScale != 'F'
+            'is-active': temperatureScale == 'F',
+            'is-inverted': temperatureScale != 'F'
           }"
           (click)="toggleTemperatureScale('F')"
           >ºF</a
