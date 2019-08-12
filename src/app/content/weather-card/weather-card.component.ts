@@ -12,7 +12,6 @@ import { SettingsService } from './../services/settings/settings.service';
   styleUrls: ['./weather-card.component.scss']
 })
 export class WeatherCardComponent implements OnInit {
-  
   @Input() card: Card;
   public dayResume: DayResume;
   public vote: Vote;
