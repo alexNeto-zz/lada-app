@@ -12,7 +12,7 @@ export class ToastService {
     toast({
       message: message,
       type: 'is-warning',
-      position: 'bottom-center',
+      position: 'top-center',
       closeOnClick: true,
     });
   }
@@ -21,7 +21,7 @@ export class ToastService {
     toast({
       message: message,
       type: 'is-danger',
-      position: 'bottom-center',
+      position: 'top-center',
       closeOnClick: true,
     });
   }

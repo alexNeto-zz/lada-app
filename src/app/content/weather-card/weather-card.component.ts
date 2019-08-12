@@ -4,6 +4,7 @@ import { Vote } from '../interfaces/vote';
 import { Card } from './../interfaces/card';
 import { DayResume } from './../interfaces/day-resume';
 import { LocationFinderService } from './../services/location/location-finder.service';
+import { SettingsService } from './../services/settings/settings.service';
 
 @Component({
   selector: 'app-weather-card',
@@ -11,14 +12,18 @@ import { LocationFinderService } from './../services/location/location-finder.se
   styleUrls: ['./weather-card.component.scss']
 })
 export class WeatherCardComponent implements OnInit {
+  
   @Input() card: Card;
   public dayResume: DayResume;
   public vote: Vote;
-
   public isLoadingUpVote: boolean;
   public isLoadingDownVote: boolean;
 
-  constructor(private location: LocationFinderService) {
+  constructor(private location: LocationFinderService, private settings: SettingsService) {
+  }
+
+  get temperatureScale(): string {
+    return this.settings.temperatureScale;
   }
 
   ngOnInit() {
@@ -59,9 +64,4 @@ export class WeatherCardComponent implements OnInit {
         () => { }
       );
   }
-
 }
-
-
-
-
