@@ -49,15 +49,14 @@
 .ng-autocomplete-dropdown .ng-dropdown .dropdown-item {
   width: 100%;
   cursor: pointer;
-  font-family: Arial;
-  font-weight: normal;
+  font-family: $main-font;
   font-size: 1rem;
   background-color: $white;
 }
 
 @mixin active-item {
-  color: $gray-4;
-  background: $blue-1;
+  color: $gray-5;
+  background: $blue-2;
 }
 
 .ng-autocomplete-dropdown .ng-dropdown .dropdown-item:hover {
