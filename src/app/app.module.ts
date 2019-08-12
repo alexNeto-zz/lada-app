@@ -1,7 +1,7 @@
+import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import localePT from '@angular/common/locales/pt';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,11 +13,14 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
 import { VoteComponent } from './components/vote/vote.component';
+import { TemperaturePipe } from './content/pipes/temperature/temperature.pipe';
+import { SettingsService } from './content/services/settings/settings.service';
 import { WeatherCardComponent } from './content/weather-card/weather-card.component';
 import { WeatherListComponent } from './content/weather-list/weather-list.component';
 import { HeaderComponent } from './header/header.component';
 import { ToolPanelComponent } from './tool-panel/tool-panel.component';
 
+registerLocaleData(localePT, 'pt');
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { ToolPanelComponent } from './tool-panel/tool-panel.component';
     SearchComponent,
     VoteComponent,
     WeatherCardComponent,
-    WeatherListComponent
+    WeatherListComponent,
+    TemperaturePipe
   ],
   imports: [
     HttpClientModule,
@@ -39,9 +43,15 @@ import { ToolPanelComponent } from './tool-panel/tool-panel.component';
     BrowserAnimationsModule,
     NgAutoCompleteModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+    SettingsService,
+    {
+      provide: LOCALE_ID,
+      deps: [SettingsService],
+      useFactory: (settingsService) => settingsService.getLocale()
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

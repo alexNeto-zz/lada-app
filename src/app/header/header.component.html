@@ -1,16 +1,21 @@
-<nav class="navbar light" role="navigation" aria-label="main navigation">
+<nav
+  class="navbar is-white light"
+  role="navigation"
+  aria-label="main navigation"
+>
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
       <h1 id="logo-text" class="title is-5">{{ title }}</h1>
     </a>
-  </div>
-  <!-- <a
+
+    <a
+      [ngClass]="{ 'is-active': isActive }"
       role="button"
-      class="navbar-burger burger"
+      (click)="toggleMenu()"
+      class="navbar-burger burger "
       aria-label="menu"
       aria-expanded="false"
       data-target="navbarBasicExample"
-      (click)="toggleMenu()"
     >
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -18,26 +23,57 @@
     </a>
   </div>
 
-   <div
+  <div
+    [ngClass]="{ 'is-active': isActive }"
     id="navbarBasicExample"
     class="navbar-menu "
-    [ngClass]="{ 'is-active': isActive }"
   >
-    <div class="navbar-end level">
-      <div class="level-item has-text-centered">
+    <div class="navbar-end">
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider" />
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div> -->
+
+      <!-- <a class="navbar-item">
+        Home
+      </a> -->
+      <div class="navbar-item">
         <a
-          id="gh-link"
-          class="button is-rounded is-outlined"
-          href="https://github.com/alexNeto/lada-app"
-          rel="noreferrer"
-          target="_blank"
-          ><i class="fab fa-github"></i
-        ></a>
-        <app-toggle
-          [toggleId]="'theme-selector'"
-          [frontIcon]="'far fa-lightbulb'"
-        ></app-toggle>
+          class="button  is-primary is-active"
+          [ngClass]="{
+            'is-active': temperatureScale == 'C',
+            'is-inverted': temperatureScale != 'C'
+          }"
+          (click)="toggleTemperatureScale('C')"
+          >ºC</a
+        >
+        <a
+          class="button is-primary  is-inverted"
+          [ngClass]="{
+            'is-active': temperatureScale == 'F',
+            'is-inverted': temperatureScale != 'F'
+          }"
+          (click)="toggleTemperatureScale('F')"
+          >ºF</a
+        >
       </div>
     </div>
-  </div> -->
+  </div>
 </nav>

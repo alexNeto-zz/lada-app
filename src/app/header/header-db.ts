@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { IndexeddbService } from 'src/app/content/services/indexeddb/indexeddb.service';
-import { SettingsService } from 'src/app/content/services/settings/settings.service';
-import { Candidate } from './../../content/interfaces/candidate';
+import { Settings } from '../content/interfaces/settings';
+import { SettingsService } from '../content/services/settings/settings.service';
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class SearchDB {
+export class HeaderDB {
 
     private dbName: string;
     private key: number;
     constructor(private idb: IndexeddbService, private settings: SettingsService) {
         this.dbName = this.settings.idbName;
-        this.key = 1;
+        this.key = 2;
     }
 
-    updateLocation(candidate: Candidate) {
-        this.idb.update(this.dbName, candidate, this.key);
+    updateSettings(settings: Settings) {
+        this.idb.update(this.dbName, settings, this.key);
     }
 
-    getLocation(success, error) {
+    getSettings(success, error) {
         this.idb.retrieve(this.dbName, this.key, success, error);
     }
 }

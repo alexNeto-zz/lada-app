@@ -1,5 +1,5 @@
 <div
-  *ngIf="card; else placeholder"
+  *ngIf="card && card.dayResume; else placeholder"
   id="weather-card"
   class="notification light"
 >
@@ -9,7 +9,9 @@
       [ngClass]="{ 'total-width': !dayResume.currentWeather }"
     >
       <div *ngIf="dayResume.currentWeather">
-        <p id="weather-current-temperature">{{ dayResume.currentWeather }}ºC</p>
+        <p id="weather-current-temperature">
+          {{ dayResume.currentWeather | temperature: temperatureScale }}
+        </p>
       </div>
       <div>
         <img
@@ -29,7 +31,9 @@
           alt="icone para temperatura máxima"
           srcset=""
         />
-        <p>{{ dayResume.maximumTemperature }}ºC</p>
+        <p>
+          {{ dayResume.maximumTemperature | temperature: temperatureScale }}
+        </p>
       </div>
       <div class="min-max-aling">
         <img
@@ -37,7 +41,9 @@
           alt="icone para temperatura mínima"
           srcset=""
         />
-        <p>{{ dayResume.minimumTemperature }}ºC</p>
+        <p>
+          {{ dayResume.minimumTemperature | temperature: temperatureScale }}
+        </p>
       </div>
       <div class="min-max-aling">
         <img
@@ -45,7 +51,7 @@
           alt="icone para probabilidade de chuva"
           srcset=""
         />
-        <p>{{ dayResume.rainProbability }}%</p>
+        <p>{{ dayResume.rainProbability | percent: "2.0-2" }}</p>
       </div>
     </div>
   </div>
