@@ -15,6 +15,7 @@
       </div>
       <div>
         <img
+          *ngIf="dayResume.weatherCondition !== ''"
           id="weather-condition-icon"
           src="/assets/svg/weather/animated/{{
             dayResume.weatherCondition
