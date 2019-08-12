@@ -57,7 +57,7 @@ export class WeatherListComponent implements OnInit, OnDestroy {
   }
 
   makeRequest() {
-    this.cardList = this.sourceList.map(i => undefined);
+    this.cardList = [];
     this.subscription.push(from(this.sourceList).pipe(
       mergeMap(source => <Observable<DayResume>>this.buildRequest(source))
     ).subscribe(
@@ -66,10 +66,9 @@ export class WeatherListComponent implements OnInit, OnDestroy {
           dayResume: dayResume,
           location: `${this.candidate.attributes.Region}:${this.candidate.attributes.City}`
         };
-        this.cardList.pop();
         this.cardList.unshift(card);
       },
-      () => this.cardList.pop()
+      () => { }
     ));
   }
 

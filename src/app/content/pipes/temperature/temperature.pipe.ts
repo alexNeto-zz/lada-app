@@ -34,6 +34,6 @@ export class TemperaturePipe implements PipeTransform {
   }
 
   toLocaleFormat(value: number): string {
-    return formatNumber(value, this.settings.getLocale());
+    return formatNumber(parseFloat(value.toFixed(2)), this.settings.getLocale());
   }
 }
