@@ -66,6 +66,7 @@ export class WeatherListComponent implements OnInit, OnDestroy {
           dayResume: dayResume,
           location: `${this.candidate.attributes.Region}:${this.candidate.attributes.City}`
         };
+        this.cardList.pop();
         this.cardList.unshift(card);
       },
       () => this.cardList.pop()
