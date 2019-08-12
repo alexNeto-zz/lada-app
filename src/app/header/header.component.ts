@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Settings } from './../content/interfaces/settings';
 import { SettingsService } from './../content/services/settings/settings.service';
 import { HeaderDB } from './header-db';
@@ -10,15 +10,13 @@ import { HeaderDB } from './header-db';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   public title: string;
-  private titles: string[];
-  private interval;
   public isActive: boolean;
   private savedSettings: Settings;
 
   constructor(private settings: SettingsService, private headerDB: HeaderDB) {
-    this.titles = ['Lada', 'Лада', 'Łada', 'ლადა'];
+    this.title = 'Lada';
     this.isActive = false;
     this.savedSettings = {
       temperatureScale: 'C'
@@ -26,31 +24,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setNewNameToTitle();
-    this.interval = setInterval(() => {
-      this.setNewNameToTitle();
-    }, 2000);
     this.settingsSetup();
-  }
-
-  ngOnDestroy() {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
   }
 
   settingsSetup() {
     this.headerDB.getSettings(
-      (settings: Settings) => {
-        if (settings !== undefined) {
-          this.savedSettings = settings;
-          this.settings.temperatureScale = settings.temperatureScale;
-        } else {
-          this.createNewSetting();
-        }
-      },
-      () => this.createNewSetting.bind(this)
+      this.getSettings.bind(this),
+      this.createNewSetting.bind(this)
     );
+  }
+
+  getSettings(settings: Settings) {
+    if (settings !== undefined) {
+      this.savedSettings = settings;
+      this.settings.temperatureScale = settings.temperatureScale;
+    } else {
+      this.createNewSetting();
+    }
   }
 
   createNewSetting() {
@@ -61,14 +51,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.settings.temperatureScale = scale;
     this.savedSettings.temperatureScale = scale;
     this.headerDB.updateSettings(this.savedSettings);
-  }
-
-  setNewNameToTitle(): void {
-    this.title = this.getRandomTitle();
-  }
-
-  getRandomTitle(): string {
-    return this.titles[Math.floor(Math.random() * this.titles.length)];
   }
 
   toggleMenu() {

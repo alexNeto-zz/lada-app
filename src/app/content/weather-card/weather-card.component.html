@@ -1,5 +1,5 @@
 <div
-  *ngIf="card; else placeholder"
+  *ngIf="card && card.dayResume; else placeholder"
   id="weather-card"
   class="notification light"
 >
@@ -10,7 +10,7 @@
     >
       <div *ngIf="dayResume.currentWeather">
         <p id="weather-current-temperature">
-          {{ dayResume.currentWeather | temperature }}
+          {{ dayResume.currentWeather | temperature: temperatureScale }}
         </p>
       </div>
       <div>
