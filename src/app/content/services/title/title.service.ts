@@ -1,5 +1,5 @@
-import { Title } from '@angular/platform-browser';
 import { Injectable } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class TitleService {
   private divider: string;
 
   constructor(private title: Title) {
-    this.stemTitle = 'lada-app';
+    this.stemTitle = 'Lada-app';
     this.divider = ' | ';
   }
 

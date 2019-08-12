@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   private savedSettings: Settings;
 
   constructor(private settings: SettingsService, private headerDB: HeaderDB) {
-    this.title = 'Lada';
+    this.title = 'Lada-app';
     this.isActive = false;
     this.savedSettings = {
       temperatureScale: 'C'
