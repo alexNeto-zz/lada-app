@@ -111,12 +111,9 @@ $source-size: 768px;
 #weather-current-temperature {
   font-family: $main-font;
   font-weight: 200;
-  font-size: 3.7em;
+  font-size: 3em;
   text-align: center;
   color: $gray-4;
-  @media screen and (max-width: 375px) {
-    font-size: 3em;
-  }
   @media screen and (max-width: 320px) {
     font-size: 2.25em;
   }

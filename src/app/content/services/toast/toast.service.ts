@@ -1,5 +1,5 @@
-import { toast } from 'bulma-toast';
 import { Injectable } from '@angular/core';
+import { toast } from 'bulma-toast';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,12 @@ import { Injectable } from '@angular/core';
 export class ToastService {
 
   constructor() { }
+
+  testIfOffline() {
+    if (!navigator.onLine) {
+      this.error('Você está offline');
+    }
+  }
 
   warning(message: string) {
     toast({
