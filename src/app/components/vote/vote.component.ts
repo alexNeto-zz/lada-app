@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Vote } from 'src/app/content/interfaces/vote';
+import { ToastService } from 'src/app/content/services/toast/toast.service';
 
 @Component({
   selector: 'app-vote',
@@ -17,7 +18,7 @@ export class VoteComponent implements OnDestroy {
   @Output()
   public makeVote = new EventEmitter<boolean>();
 
-  constructor() {
+  constructor(private toast: ToastService) {
     this.vote = {
       location: 'string',
       source_name: 'string',
@@ -35,10 +36,12 @@ export class VoteComponent implements OnDestroy {
   }
 
   onUpVote() {
+    this.toast.testIfOffline();
     this.makeVote.emit(true);
   }
 
   onDownVote() {
+    this.toast.testIfOffline();
     this.makeVote.emit(false);
   }
 

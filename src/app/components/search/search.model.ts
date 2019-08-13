@@ -84,7 +84,7 @@ export class SearchBO {
 
     findListOfSourceForLocation() {
         this.isLoading = true;
-        this.testIfOffline();
+        this.toast.testIfOffline();
         if (this.candidate === undefined) {
             this.isLoading = false;
             this.isLoadingGPS = false;
@@ -132,11 +132,5 @@ export class SearchBO {
                     this.title.appendToTitle(result.address.City); console.log(result);
                 },
             );
-    }
-
-    testIfOffline() {
-        if (!navigator.onLine) {
-            this.toast.error('Você está offline');
-        }
     }
 }
