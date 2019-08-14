@@ -34,7 +34,7 @@ export class WeatherCardComponent implements OnInit {
 
   onVote(vote: boolean) {
     this.toggleLoadingState(vote);
-    this.location.vote(this.card.dayResume.source, this.card.location, vote)
+    this.location.vote(this.card.dayResume.source.replace('/', '-'), this.card.location, vote)
       .pipe(take(1))
       .subscribe(
         (voteResult: Vote) => {
