@@ -17,10 +17,11 @@ import { VoteComponent } from './components/vote/vote.component';
 import { TemperaturePipe } from './content/pipes/temperature/temperature.pipe';
 import { SentryService } from './content/services/sentry/sentry.service';
 import { SettingsService } from './content/services/settings/settings.service';
-import { WeatherCardComponent } from './content/weather-card/weather-card.component';
-import { WeatherListComponent } from './content/weather-list/weather-list.component';
-import { HeaderComponent } from './header/header.component';
-import { ToolPanelComponent } from './tool-panel/tool-panel.component';
+import { WeatherCardComponent } from './components/weather-card/weather-card.component';
+import { WeatherListComponent } from './components/weather-list/weather-list.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ToolPanelComponent } from './components/tool-panel/tool-panel.component';
+import { MainComponent } from './views/main/main.component';
 
 registerLocaleData(localePT, 'pt');
 
@@ -39,7 +40,8 @@ Sentry.init({
     VoteComponent,
     WeatherCardComponent,
     WeatherListComponent,
-    TemperaturePipe
+    TemperaturePipe,
+    MainComponent
   ],
   imports: [
     HttpClientModule,

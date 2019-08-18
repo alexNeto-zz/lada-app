@@ -1,0 +1,18 @@
+@import "../../../styles.scss";
+
+article {
+  @include light-gradient();
+  height: 100vh;
+  overflow: hidden;
+}
+
+.control__link {
+  text-decoration: none !important;
+}
+
+.light {
+  background-color: $white;
+  margin: 3rem 6rem;
+
+  @include common-shadow();
+}

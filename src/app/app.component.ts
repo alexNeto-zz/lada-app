@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +6,4 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @Input()
-  public sourceQuantity = 0;
-
-  onForecast(sourceQuantity: number) {
-    this.sourceQuantity = sourceQuantity;
-  }
 }
-

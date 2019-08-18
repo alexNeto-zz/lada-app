@@ -47,6 +47,10 @@ export class LocationFinderService {
         });
     }
 
+    getAboutInfo(): Observable<any> {
+        return this.http.get(`${this.baseUrl}/about`);
+    }
+
     updateCountryAvailableList(countryAvailableList: Sourcelist[]): void {
         this.countryAvailableList.next(countryAvailableList);
     }

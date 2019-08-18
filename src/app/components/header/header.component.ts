@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Settings } from './../content/interfaces/settings';
-import { SettingsService } from './../content/services/settings/settings.service';
+import { Settings } from '../../content/interfaces/settings';
+import { SettingsService } from '../../content/services/settings/settings.service';
 import { HeaderDB } from './header-db';
 
 
@@ -57,7 +57,11 @@ export class HeaderComponent implements OnInit {
     this.headerDB.updateSettings(this.savedSettings);
   }
 
-  toggleMenu() {
-    this.isActive = !this.isActive;
+  toggleMenu(toState: boolean) {
+    if (toState === undefined) {
+      this.isActive = !this.isActive;
+    } else {
+      this.isActive = toState;
+    }
   }
 }
