@@ -56,7 +56,7 @@ export class WeatherCardComponent implements OnInit {
   }
 
   getVotes() {
-    this.location.findVotes(this.card.dayResume.source, this.card.location)
+    this.location.findVotes(this.card.dayResume.source.replace('/', '-'), this.card.location)
       .pipe(take(1))
       .subscribe(
         (vote: Vote) => this.vote = vote,

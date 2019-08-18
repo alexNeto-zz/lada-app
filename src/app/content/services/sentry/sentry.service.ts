@@ -7,7 +7,6 @@ import * as Sentry from '@sentry/browser';
 export class SentryService implements ErrorHandler {
   constructor() { }
   handleError(error) {
-    const eventId = Sentry.captureException(error.originalError || error);
-    /* Sentry.showReportDialog({ eventId }); */
+    Sentry.captureException(error.originalError || error);
   }
 }
