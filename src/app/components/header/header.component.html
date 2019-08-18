@@ -1,0 +1,77 @@
+<header>
+  <nav class="navbar light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" routerLink="" (click)="toggleMenu(false)">
+        <h1 id="header__text" class="title is-5">{{ title }}</h1>
+      </a>
+
+      <a
+        [ngClass]="{ 'is-active': isActive }"
+        role="button"
+        (click)="toggleMenu()"
+        class="navbar-burger burger "
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarBasicExample"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div
+      [ngClass]="{ 'is-active': isActive }"
+      id="navbarBasicExample"
+      class="navbar-menu "
+    >
+      <div class="navbar-end">
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider" />
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div> -->
+
+        <a class="navbar-item" routerLink="about" (click)="toggleMenu(false)">
+          <span class="header__text">Sobre</span>
+        </a>
+        <div class="navbar-item">
+          <a
+            class="button  is-primary is-active"
+            [ngClass]="{
+              'is-active': temperatureScale == 'C',
+              'is-inverted': temperatureScale != 'C'
+            }"
+            (click)="toggleTemperatureScale('C')"
+            >ºC</a
+          >
+          <a
+            class="button is-primary  is-inverted"
+            [ngClass]="{
+              'is-active': temperatureScale == 'F',
+              'is-inverted': temperatureScale != 'F'
+            }"
+            (click)="toggleTemperatureScale('F')"
+            >ºF</a
+          >
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

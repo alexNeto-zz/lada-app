@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IndexeddbService } from 'src/app/content/services/indexeddb/indexeddb.service';
-import { Settings } from '../content/interfaces/settings';
-import { SettingsService } from '../content/services/settings/settings.service';
+import { Settings } from '../../content/interfaces/settings';
+import { SettingsService } from '../../content/services/settings/settings.service';
 
 
 @Injectable({
