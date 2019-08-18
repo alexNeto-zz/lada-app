@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
     this.headerDB.updateSettings(this.savedSettings);
   }
 
-  toggleMenu(toState: boolean) {
+  toggleMenu(toState?: boolean) {
     if (toState === undefined) {
       this.isActive = !this.isActive;
     } else {
