@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { from, Observable, Subject, Subscription } from 'rxjs';
 import { mergeMap, take } from 'rxjs/operators';
-import { Sourcelist } from '../../content/interfaces/sourcelist';
-import { LocationFinderService } from '../../content/services/location/location-finder.service';
 import { Candidate } from '../../content/interfaces/candidate';
 import { Card } from '../../content/interfaces/card';
 import { DayResume } from '../../content/interfaces/day-resume';
+import { Sourcelist } from '../../content/interfaces/sourcelist';
+import { LocationFinderService } from '../../content/services/location/location-finder.service';
 import { TitleService } from '../../content/services/title/title.service';
 
 @Component({
