@@ -80,6 +80,13 @@ export class WeatherListComponent implements OnInit, OnDestroy {
     }
   }
 
+  voteRanker(card: Card) {
+    const newCardList = this.cardList.filter(item => item.dayResume.source !== card.dayResume.source);
+    newCardList.push(card);
+    newCardList.sort((card1: Card, card2: Card) => card2.vote.score - card1.vote.score);
+    this.cardList = newCardList;
+  }
+
   ngOnDestroy() {
     this.subscription.forEach(s => s.unsubscribe());
     this.sourceQuantity.unsubscribe();
