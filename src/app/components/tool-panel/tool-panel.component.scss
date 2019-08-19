@@ -23,10 +23,6 @@
   @include light-gradient();
 }
 
-.dark {
-  @include dark-gradient();
-}
-
 .show-h1 {
   padding: 0 1rem;
   strong {

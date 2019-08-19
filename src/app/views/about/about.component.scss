@@ -10,9 +10,8 @@ article {
   text-decoration: none !important;
 }
 
-.light {
+.notification--light {
   background-color: $white;
-  margin: 3rem 6rem;
-
+  margin-top: 6rem;
   @include common-shadow();
 }
