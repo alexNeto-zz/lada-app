@@ -18,14 +18,7 @@ export class VoteComponent implements OnDestroy {
   @Output()
   public makeVote = new EventEmitter<boolean>();
 
-  constructor(private toast: ToastService) {
-    this.vote = {
-      location: 'string',
-      source_name: 'string',
-      up_vote: 12,
-      down_vote: 9,
-    };
-  }
+  constructor(private toast: ToastService) { }
 
   get quantity() {
     try {

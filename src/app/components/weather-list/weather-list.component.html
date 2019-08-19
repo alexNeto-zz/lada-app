@@ -1,4 +1,4 @@
 <div class="container" *ngFor="let card of cardList">
-  <app-weather-card [card]="card"></app-weather-card>
+  <app-weather-card (cardEvent)="voteRanker($event)" [card]="card"></app-weather-card>
 </div>
 <div id="margin-bottom" *ngIf="cardList.length > 0"></div>

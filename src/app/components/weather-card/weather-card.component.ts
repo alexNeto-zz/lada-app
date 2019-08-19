@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { Vote } from '../../content/interfaces/vote';
 import { Card } from '../../content/interfaces/card';
-import { DayResume } from '../../content/interfaces/day-resume';
+import { Vote } from '../../content/interfaces/vote';
 import { LocationFinderService } from '../../content/services/location/location-finder.service';
 import { SettingsService } from '../../content/services/settings/settings.service';
+import { DayResume } from './../../content/interfaces/day-resume';
 
 @Component({
   selector: 'app-weather-card',
@@ -12,7 +12,10 @@ import { SettingsService } from '../../content/services/settings/settings.servic
   styleUrls: ['./weather-card.component.scss']
 })
 export class WeatherCardComponent implements OnInit {
-  @Input() card: Card;
+  @Input()
+  card: Card;
+  @Output()
+  cardEvent = new EventEmitter<Card>();
   public dayResume: DayResume;
   public vote: Vote;
   public isLoadingUpVote: boolean;
@@ -59,7 +62,11 @@ export class WeatherCardComponent implements OnInit {
     this.location.findVotes(this.card.dayResume.source.replace('/', '-'), this.card.location)
       .pipe(take(1))
       .subscribe(
-        (vote: Vote) => this.vote = vote,
+        (vote: Vote) => {
+          this.vote = vote;
+          this.card.vote = vote;
+          this.cardEvent.emit(this.card);
+        },
         () => { }
       );
   }
