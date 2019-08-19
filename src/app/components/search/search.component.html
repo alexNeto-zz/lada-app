@@ -15,7 +15,7 @@
       [ngClass]="{ 'is-loading': isLoadingGPS }"
       (click)="searchGPS(true)"
     >
-      <i class="far fa-compass"></i>
+      <fa-icon [icon]="['far', 'compass']"></fa-icon>
     </a>
     <a
       id="search-button"
@@ -24,7 +24,7 @@
       [ngClass]="{ 'is-loading': isLoading }"
       (click)="search()"
     >
-      <i class="fas fa-search"></i>
+      <fa-icon icon="search"></fa-icon>
     </a>
   </div>
 </div>
