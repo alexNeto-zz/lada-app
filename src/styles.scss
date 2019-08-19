@@ -2,6 +2,7 @@
 @import "scss/fonts.scss";
 @import "scss/mixin.scss";
 @import "scss/ng-autocomplete.scss";
+@import "scss/theme.scss";
 @import "bulma";
 @import "normalize.css";
 @import "animate.css";
@@ -9,6 +10,7 @@
 :focus {
   outline: none;
 }
+
 ::-moz-focus-inner {
   border: 0;
 }
@@ -20,10 +22,6 @@
 button {
   background: none transparent;
   border: none;
-}
-
-.dark {
-  background: $black;
 }
 
 .light {

@@ -4,19 +4,7 @@
   color: $gray-4;
 }
 
-.light {
+.header {
   background: $white;
   @include common-shadow(0.1);
-}
-
-.dark {
-  background-color: $black;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba($color: $gray-3, $alpha: 0.7);
-}
-
-#gh-link {
-  margin-right: 1rem;
-  color: $gray-3;
 }

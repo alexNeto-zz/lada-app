@@ -6,14 +6,6 @@
 
 App para consulta e comparação de previsão do tempo. Related to [lada-api](https://github.com/alexNeto/lada-api)
 
-- [LadaApp](#ladaapp)
-  - [Setup](#setup)
-  - [Code scaffolding](#code-scaffolding)
-  - [Build](#build)
-  - [Running unit tests](#running-unit-tests)
-  - [Running end-to-end tests](#running-end-to-end-tests)
-  - [Further help](#further-help)
-  
 ## Setup
 
 ```bash

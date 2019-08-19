@@ -26,16 +26,6 @@
     $right-color;
 }
 
-@mixin dark-gradient {
-  background: linear-gradient(
-      90deg,
-      $black 0%,
-      rgba($gray-3, 0.45) 50%,
-      $black 100%
-    ),
-    $black;
-}
-
 @mixin search-bar-sizes {
   @media screen {
     width: 500px;

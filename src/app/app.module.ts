@@ -14,7 +14,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
-import { ToggleComponent } from './components/toggle/toggle.component';
 import { VoteComponent } from './components/vote/vote.component';
 import { WeatherCardComponent } from './components/weather-card/weather-card.component';
 import { WeatherListComponent } from './components/weather-list/weather-list.component';
@@ -35,7 +34,6 @@ Sentry.init({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ToggleComponent,
     TemperaturePipe,
     MainComponent,
     SearchComponent,
