@@ -1,19 +1,20 @@
 @import "../../../styles.scss";
 
-
-
 article {
   @include light-gradient();
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 6rem;
+  padding-top: 6rem;
 }
 
+section {
+  display: block;
+}
 .control__link {
   text-decoration: none !important;
 }
 
 .notification--light {
   background-color: $white;
-  margin-top: 6rem;
   @include common-shadow();
 }
