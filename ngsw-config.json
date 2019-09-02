@@ -4,10 +4,16 @@
   "assetGroups": [
     {
       "name": "lada-app",
-      "installMode": "prefetch",
+      "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/favicon.ico", "/index.html", "/*.css", "/*.js", "/*.svg"]
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/*.(css|js|svg)",
+          "!/*-sw.js",
+          "!ngsw-worker.js"
+        ]
       }
     },
     {
@@ -17,7 +23,7 @@
       "resources": {
         "files": [
           "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/**/*.(eot|cur|jpg|jpeg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
     }
@@ -26,12 +32,12 @@
     {
       "name": "lada-api",
       "urls": ["https://api.v1.lada-app.com/**"],
-      "version": 2,
+      "version": 3,
       "cacheConfig": {
         "strategy": "freshness",
-        "maxSize": 100,
+        "maxSize": 10,
         "maxAge": "1d",
-        "timeout": "10s"
+        "timeout": "5s"
       }
     },
     {
@@ -39,11 +45,12 @@
       "urls": [
         "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/**"
       ],
+      "version": 1,
       "cacheConfig": {
-        "strategy": "freshness",
+        "strategy": "performance",
         "maxSize": 100,
         "maxAge": "30d",
-        "timeout": "10s"
+        "timeout": "2s"
       }
     }
   ]
