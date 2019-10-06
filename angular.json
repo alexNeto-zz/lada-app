@@ -27,7 +27,8 @@
               "src/assets",
               "src/manifest.webmanifest",
               "src/manifest.json",
-              "src/robots.txt"
+              "src/robots.txt",
+              "src/browserconfig.xml"
             ],
             "styles": ["src/styles.scss"],
             "scripts": [],
