@@ -11,7 +11,7 @@ before_script:
 script:
  - npm install
  - ng lint
- - ng build --prod --baseHref=/
+ - ng build --prod --base-href /
  - gulp purifyCSS
 deploy:
   skip_cleanup: true
