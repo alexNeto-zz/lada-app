@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Candidate } from '@interfaces/candidate';
+import { Card } from '@interfaces/card';
+import { DayResume } from '@interfaces/day-resume';
+import { Sourcelist } from '@interfaces/sourcelist';
+import { LocationFinderService } from '@services/location/location-finder.service';
+import { TitleService } from '@services/title/title.service';
 import { from, Observable, Subject, Subscription } from 'rxjs';
 import { mergeMap, take } from 'rxjs/operators';
-import { Candidate } from '../../content/interfaces/candidate';
-import { Card } from '../../content/interfaces/card';
-import { DayResume } from '../../content/interfaces/day-resume';
-import { Sourcelist } from '../../content/interfaces/sourcelist';
-import { LocationFinderService } from '../../content/services/location/location-finder.service';
-import { TitleService } from '../../content/services/title/title.service';
 
 @Component({
   selector: 'app-weather-list',

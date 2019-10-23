@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { Vote } from 'src/app/content/interfaces/vote';
-import { ToastService } from 'src/app/content/services/toast/toast.service';
+import { Vote } from '@interfaces/vote';
+import { ToastService } from '@services/toast/toast.service';
 
 @Component({
   selector: 'app-vote',

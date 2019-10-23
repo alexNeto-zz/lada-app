@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Card } from '@interfaces/card';
+import { DayResume } from '@interfaces/day-resume';
+import { Vote } from '@interfaces/vote';
+import { LocationFinderService } from '@services/location/location-finder.service';
+import { SettingsService } from '@services/settings/settings.service';
 import { take } from 'rxjs/operators';
-import { Card } from '../../content/interfaces/card';
-import { Vote } from '../../content/interfaces/vote';
-import { LocationFinderService } from '../../content/services/location/location-finder.service';
-import { SettingsService } from '../../content/services/settings/settings.service';
-import { DayResume } from './../../content/interfaces/day-resume';
 
 @Component({
   selector: 'app-weather-card',

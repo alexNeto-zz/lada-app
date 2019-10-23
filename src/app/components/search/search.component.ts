@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { LocationFound } from '@interfaces/location-found';
 import { CreateNewAutocompleteGroup, NgAutoCompleteComponent, SelectedAutocompleteItem } from 'ng-auto-complete';
-import { LocationFound } from '../../content/interfaces/location-found';
 import { SearchBO } from './search.model';
 
 @Component({

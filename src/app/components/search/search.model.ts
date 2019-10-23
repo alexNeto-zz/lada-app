@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Candidate } from '@interfaces/candidate';
+import { LocationFound } from '@interfaces/location-found';
+import { ReverseCandidate } from '@interfaces/reverse-candidate';
+import { Sourcelist } from '@interfaces/sourcelist';
+import { reverseCandidateToCandidate } from '@models/candidate-converter.model';
+import { ArcGisService } from '@services/arc-gis/arc-gis.service';
+import { GeoLocationService } from '@services/geo-location/geo-location.service';
+import { LocationFinderService } from '@services/location/location-finder.service';
+import { TitleService } from '@services/title/title.service';
+import { ToastService } from '@services/toast/toast.service';
 import { SelectedAutocompleteItem } from 'ng-auto-complete';
 import { take } from 'rxjs/operators';
-import { ReverseCandidate } from 'src/app/content/interfaces/reverse-candidate';
-import { Sourcelist } from 'src/app/content/interfaces/sourcelist';
-import { ToastService } from 'src/app/content/services/toast/toast.service';
-import { LocationFound } from '../../content/interfaces/location-found';
-import { Candidate } from './../../content/interfaces/candidate';
-import { reverseCandidateToCandidate } from './../../content/models/candidate-converter.model';
-import { ArcGisService } from './../../content/services/arc-gis/arc-gis.service';
-import { GeoLocationService } from './../../content/services/geo-location/geo-location.service';
-import { LocationFinderService } from './../../content/services/location/location-finder.service';
-import { TitleService } from './../../content/services/title/title.service';
 import { SearchDB } from './search-db.model';
 
 @Injectable({

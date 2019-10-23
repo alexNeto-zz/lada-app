@@ -1,5 +1,5 @@
-import { ReverseCandidate } from '../interfaces/reverse-candidate';
-import { Candidate } from './../interfaces/candidate';
+import { Candidate } from '@interfaces/candidate';
+import { ReverseCandidate } from '@interfaces/reverse-candidate';
 
 export const candidateToReverseCandidate =
     (candidate: Candidate): ReverseCandidate => {

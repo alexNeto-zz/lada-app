@@ -1,7 +1,18 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@components/*": ["app/components/*"],
+      "@enums/*": ["app/content/enums/*"],
+      "@interfaces/*": ["app/content/interfaces/*"],
+      "@models/*": ["app/content/models/*"],
+      "@pipes/*": ["app/content/pipes/*"],
+      "@services/*": ["app/content/services/*"],
+      "@modules/*": ["app/modules/*"],
+      "@views/*": ["app/views/*"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -11,12 +22,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
   }
 }

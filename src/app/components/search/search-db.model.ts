@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IndexeddbKey } from 'src/app/content/enums/indexed-db-key.enum';
-import { IndexeddbService } from 'src/app/content/services/indexeddb/indexeddb.service';
-import { SettingsService } from 'src/app/content/services/settings/settings.service';
-import { Candidate } from './../../content/interfaces/candidate';
+import { IndexeddbKey } from '@enums/indexed-db-key.enum';
+import { Candidate } from '@interfaces/candidate';
+import { IndexeddbService } from '@services/indexeddb/indexeddb.service';
+import { SettingsService } from '@services/settings/settings.service';
 
 @Injectable({
     providedIn: 'root'

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Candidate } from '@interfaces/candidate';
+import { Sourcelist } from '@interfaces/sourcelist';
+import { environment } from 'environments/environment';
 import { Observable, Subject } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { Candidate } from './../../interfaces/candidate';
-import { Sourcelist } from './../../interfaces/sourcelist';
 
 
 @Injectable({

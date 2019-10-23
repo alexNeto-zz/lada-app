@@ -1,6 +1,6 @@
 import { formatNumber } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
-import { SettingsService } from './../../services/settings/settings.service';
+import { SettingsService } from '@services/settings/settings.service';
 
 @Pipe({
   name: 'temperature'

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocationFinderService } from '@services/location/location-finder.service';
 import { take } from 'rxjs/operators';
-import { LocationFinderService } from './../../content/services/location/location-finder.service';
 
 @Component({
   selector: 'app-about',

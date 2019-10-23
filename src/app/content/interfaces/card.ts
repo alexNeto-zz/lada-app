@@ -1,4 +1,4 @@
-import { Vote } from 'src/app/content/interfaces/vote';
+import { Vote } from '@interfaces/vote';
 import { DayResume } from './day-resume';
 
 export interface Card {

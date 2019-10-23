@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Settings } from '../../content/interfaces/settings';
-import { SettingsService } from '../../content/services/settings/settings.service';
+import { Settings } from '@interfaces/settings';
+import { SettingsService } from '@services/settings/settings.service';
 import { HeaderDB } from './header-db';
 
 
