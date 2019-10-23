@@ -14,7 +14,7 @@ export class IndexeddbService {
 
   constructor() {
     this.idbName = 'lada-idb';
-    this.idbVersion = 2;
+    this.idbVersion = 3;
     this.idb = new NgxIndexedDB(this.idbName, this.idbVersion);
   }
 

@@ -12,7 +12,7 @@ export class SettingsService {
   constructor() {
     this._temperatureScale = 'C';
     this._idbName = 'lada-idb';
-    this._idbVersion = 1;
+    this._idbVersion = 3;
   }
 
   set temperatureScale(temperatureScale: string) {

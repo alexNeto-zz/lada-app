@@ -129,7 +129,7 @@ export class SearchBO {
             .pipe(take(1))
             .subscribe(
                 (result) => {
-                    this.title.appendToTitle(result.address.City); console.log(result);
+                    this.title.appendToTitle(result.address.City);
                 },
             );
     }

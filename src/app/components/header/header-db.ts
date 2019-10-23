@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IndexeddbKey } from 'src/app/content/enums/indexed-db-key.enum';
 import { IndexeddbService } from 'src/app/content/services/indexeddb/indexeddb.service';
 import { Settings } from '../../content/interfaces/settings';
 import { SettingsService } from '../../content/services/settings/settings.service';
@@ -13,7 +14,7 @@ export class HeaderDB {
     private key: number;
     constructor(private idb: IndexeddbService, private settings: SettingsService) {
         this.dbName = this.settings.idbName;
-        this.key = 2;
+        this.key = IndexeddbKey.temperature_unit;
     }
 
     updateSettings(settings: Settings) {

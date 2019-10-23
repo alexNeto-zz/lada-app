@@ -4,7 +4,7 @@
   "assetGroups": [
     {
       "name": "lada-app",
-      "installMode": "lazy",
+      "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
         "files": [
