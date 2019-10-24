@@ -83,7 +83,7 @@ export class WeatherListComponent implements OnInit, OnDestroy {
 
   voteRanker(card: Card) {
     const sourceFilter = (item) => {
-      return item.dayResume.source !== card.dayResume.source
+      return item.dayResume.source !== card.dayResume.source;
     };
 
     const newCardList = this.cardList.filter(sourceFilter);
