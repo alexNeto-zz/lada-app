@@ -2,25 +2,19 @@ language: node_js
 node_js:
   - "11.0"
 sudo: required
-branches:
-  only:
-    - master
-jobs:
-  include:
-    - stage: dependencies
-      script:
-        - npm install -g @angular/cli
-        - npm install gulp
-        - npm install
-    - stage: lint
-      script: ng lint
-    - stage: build
-      script:
-        - ng build --prod --base-href /
-        - gulp purifyCSS
-    - stage: deploy
-      deploy:
-        skip_cleanup: true
-        provider: firebase
-        token:
-          secure: $FIREBASE_TOKEN
+install:
+  - npm install -g @angular/cli
+  - npm install gulp
+  - npm install
+script:
+  - ng lint
+  - ng build --prod --base-href /
+  - gulp purifyCSS
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
+  on:
+    branch: master
+    tags: true
