@@ -5,12 +5,13 @@ sudo: required
 branches:
   only:
     - master
-before_script:
-  - npm install -g @angular/cli
-  - npm install gulp
-  - npm install
 jobs:
   include:
+    - stage: dependencies
+      script:
+        - npm install -g @angular/cli
+        - npm install gulp
+        - npm install
     - stage: lint
       script: ng lint
     - stage: build
