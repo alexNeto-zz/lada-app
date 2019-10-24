@@ -82,7 +82,11 @@ export class WeatherListComponent implements OnInit, OnDestroy {
   }
 
   voteRanker(card: Card) {
-    const newCardList = this.cardList.filter(item => item.dayResume.source !== card.dayResume.source);
+    const sourceFilter = (item) => {
+      return item.dayResume.source !== card.dayResume.source
+    };
+
+    const newCardList = this.cardList.filter(sourceFilter);
     newCardList.push(card);
     newCardList.sort((card1: Card, card2: Card) => card2.vote.score - card1.vote.score);
     this.cardList = newCardList;

@@ -65,7 +65,8 @@ export class WeatherCardComponent implements OnInit {
         (vote: Vote) => {
           this.vote = vote;
           this.card.vote = vote;
-          this.cardEvent.emit(this.card);
+          if (this.card && this.card.dayResume && this.card.dayResume.source)
+            this.cardEvent.emit(this.card);
         },
         () => { }
       );
