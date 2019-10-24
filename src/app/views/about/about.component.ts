@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationFinderService } from '@services/location/location-finder.service';
+import { environment } from 'environments/environment';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -18,10 +19,10 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.appVersion = environment.appVersion;
     this.location.getAboutInfo().pipe(take(1)).subscribe(
       (res) => {
         this.apiVersion = res.api_version;
-        this.appVersion = res.app_version;
       }
     );
   }
