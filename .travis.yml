@@ -6,8 +6,9 @@ install:
   - npm install -g @angular/cli
   - npm install gulp
   - npm install
+before_script:
+  - sed -i "s/appVersion: '[0-9]\+\.[0-9]\+\.[0-9]'\+/appVersion: '$VERSAO_TAG'/" ./src/environments/environment.prod.ts
 script:
-  - "sed -i \"s/appVersion: '[0-9]\+\.[0-9]\+\.[0-9]'\+/appVersion: '$VERSAO_TAG'/\" ./src/environments/environment.prod.ts"
   - ng lint
   - ng build --prod --base-href /
   - gulp purifyCSS
