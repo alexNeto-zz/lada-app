@@ -19,8 +19,7 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.appVersion = environment.appVersion;
-    
+    this.appVersion = environment.appVersion || '0.0.0';
     this.location.getAboutInfo().pipe(take(1)).subscribe(
       (res) => {
         this.apiVersion = res.api_version;

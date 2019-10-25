@@ -7,7 +7,7 @@ install:
   - npm install gulp
   - npm install
 before_script:
-  - sed -i "s/appVersion: '[0-9]\+\.[0-9]\+\.[0-9]'\+/appVersion: '$VERSAO_TAG'/" ./src/environments/environment.prod.ts
+  - "./ci/version_control"
 script:
   - ng lint
   - ng build --prod --base-href /
