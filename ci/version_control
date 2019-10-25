@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo "Adding version from tag $VERSAO_TAG"
-sed -i "s/appVersion: '[0-9]\+\.[0-9]\+\.[0-9]'\+/appVersion: '$VERSAO_TAG'/" ./src/environments/environment.prod.ts
+echo "Adding version from tag $TRAVIS_TAG"
+sed -i "s/appVersion: '[0-9]\+\.[0-9]\+\.[0-9]'\+/appVersion: '$TRAVIS_TAG'/" ./src/environments/environment.prod.ts
 echo "Done"
