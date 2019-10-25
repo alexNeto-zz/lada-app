@@ -5,7 +5,7 @@ import { MainComponent } from '@views/main/main.component';
 const routes: Routes = [
   {
     path: 'about',
-    loadChildren: () => import('./views/about/about.module').then(mod => mod.AboutModule)
+    loadChildren: () => import('@views/about/about.module').then(mod => mod.AboutModule)
   },
   {
     path: '',

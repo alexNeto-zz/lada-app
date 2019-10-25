@@ -1,4 +1,5 @@
-import { TemperaturePipe } from './temperature.pipe';
+import { TemperaturePipe } from '@pipes/temperature/temperature.pipe';
+
 
 describe('TemperaturePipe', () => {
   it('create an instance', () => {
