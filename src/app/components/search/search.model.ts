@@ -7,7 +7,7 @@ import { Sourcelist } from '@interfaces/sourcelist';
 import { reverseCandidateToCandidate } from '@models/candidate-converter.model';
 import { ArcGisService } from '@services/arc-gis/arc-gis.service';
 import { GeoLocationService } from '@services/geo-location/geo-location.service';
-import { DbAccessService } from '@services/indexeddb/db-access.service';
+import { IndexeddbService } from '@services/indexeddb/indexeddb.service';
 import { LocationFinderService } from '@services/location/location-finder.service';
 import { TitleService } from '@services/title/title.service';
 import { ToastService } from '@services/toast/toast.service';
@@ -30,11 +30,11 @@ export class SearchBO {
         private location: LocationFinderService,
         private arcGis: ArcGisService,
         private geoLocation: GeoLocationService,
-        private dbAccess: DbAccessService,
+        private idb: IndexeddbService,
         private toast: ToastService,
         private title: TitleService
     ) {
-        this.key = IndexeddbKey.address
+        this.key = IndexeddbKey.address;
         this.isLoading = false;
         this.isLoadingGPS = false;
         this.ask = false;
@@ -67,7 +67,7 @@ export class SearchBO {
 
     findByGeoLocation(data: ReverseCandidate) {
         this.setCandidate(reverseCandidateToCandidate(data));
-        this.dbAccess.update(this.candidate, this.key);
+        this.idb.update(this.key, this.candidate);
         this.findListOfSourceForLocation();
         this.isLoadingGPS = false;
     }
@@ -83,7 +83,7 @@ export class SearchBO {
             this.isLoading = false;
         };
 
-        this.dbAccess.retrieve(success, error, this.key);
+        this.idb.retrieve(this.key, success, error);
     }
 
     findListOfSourceForLocation() {
@@ -94,30 +94,35 @@ export class SearchBO {
             this.isLoadingGPS = false;
             return;
         }
+
+        const success = (data: Sourcelist[]) => {
+            this.location.updateCountryAvailableList(data);
+            this.setCandidate(this.candidate);
+            this.isLoading = false;
+            this.isLoadingGPS = false;
+        };
+
+        const error = () => {
+            this.isLoading = false;
+            this.isLoadingGPS = false;
+        };
+
         this.location.findSourceList(this.candidate.attributes.Country)
             .pipe(take(1))
-            .subscribe(
-                (data: Sourcelist[]) => {
-                    this.location.updateCountryAvailableList(data);
-                    this.setCandidate(this.candidate);
-                    this.isLoading = false;
-                    this.isLoadingGPS = false;
-                },
-                () => {
-                    this.isLoading = false;
-                    this.isLoadingGPS = false;
-                }
-            );
+            .subscribe(success, error);
     }
 
     makeRequest(searchLocation, onSuccess): void {
+
+        const success = (data: LocationFound) => {
+            onSuccess(data);
+            this.candidate = data.candidates[0];
+            this.idb.update(this.key, this.candidate);
+        };
+
         this.arcGis.findLocation(searchLocation)
             .pipe(take(1))
-            .subscribe((data: LocationFound) => {
-                onSuccess(data);
-                this.candidate = data.candidates[0];
-                this.dbAccess.update(this.candidate, this.key);
-            });
+            .subscribe(success);
     }
 
     selected(item: SelectedAutocompleteItem) {

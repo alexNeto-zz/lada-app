@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IndexeddbKey } from '@enums/indexed-db-key.enum';
 import { Settings } from '@interfaces/settings';
-import { DbAccessService } from '@services/indexeddb/db-access.service';
+import { IndexeddbService } from '@services/indexeddb/indexeddb.service';
 import { SettingsService } from '@services/settings/settings.service';
 
 
@@ -16,8 +16,8 @@ export class HeaderComponent implements OnInit {
   public isActive: boolean;
   private savedSettings: Settings;
   private key: number;
- 
-  constructor(private settings: SettingsService, private dbAccess: DbAccessService) {
+
+  constructor(private settings: SettingsService, private idb: IndexeddbService) {
     this.key = IndexeddbKey.temperature_unit;
     this.title = 'Lada-app';
     this.isActive = false;
@@ -35,10 +35,10 @@ export class HeaderComponent implements OnInit {
   }
 
   settingsSetup() {
-    this.dbAccess.retrieve(
+    this.idb.retrieve(
+      this.key,
       this.getSettings.bind(this),
-      this.createNewSetting.bind(this),
-      this.key
+      this.createNewSetting.bind(this)
     );
   }
 
@@ -52,13 +52,13 @@ export class HeaderComponent implements OnInit {
   }
 
   createNewSetting() {
-    this.dbAccess.update(this.savedSettings, this.key);
+    this.idb.update(this.key, this.savedSettings);
   }
 
   toggleTemperatureScale(scale: string) {
     this.settings.temperatureScale = scale;
     this.savedSettings.temperatureScale = scale;
-    this.dbAccess.update(this.savedSettings, this.key);
+    this.idb.update(this.key, this.savedSettings);
   }
 
   toggleMenu(toState?: boolean) {

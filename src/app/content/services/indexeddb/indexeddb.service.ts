@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SettingsService } from '@services/settings/settings.service';
 import { NgxIndexedDB } from 'ngx-indexed-db';
 import { from, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -12,9 +13,9 @@ export class IndexeddbService {
   private idbName: string;
   private idbVersion: number;
 
-  constructor() {
-    this.idbName = 'lada-idb';
-    this.idbVersion = 3;
+  constructor(private settings: SettingsService) {
+    this.idbName = this.settings.idbName;
+    this.idbVersion = this.settings.idbVersion;
     this.idb = new NgxIndexedDB(this.idbName, this.idbVersion);
   }
 
@@ -31,43 +32,48 @@ export class IndexeddbService {
     }));
   }
 
-  create(storeName: string, value: object, key?: any) {
-    this.openDatabase(storeName)
+  create(key: number, value: object) {
+    this.openDatabase(this.idbName)
       .pipe(take(1))
       .subscribe(
-        (_) => this.idb.add(storeName, value, key)
+        (_) => this.idb.add(this.idbName, value, key)
       );
   }
 
-  retrieve(storeName: string, key: any, callback, error) {
-    this.openDatabase(storeName)
+  retrieve(key: number, callback, error) {
+
+    const success = (_) => from(this.idb.getByKey(this.idbName, key))
       .pipe(take(1))
       .subscribe(
-        (_) => from(this.idb.getByKey(storeName, key))
-          .pipe(take(1))
-          .subscribe(
-            (item) => callback(item),
-            (err) => error(err)
-          ),
+        (item) => callback(item),
+        (err) => error(err)
+      );
+
+    this.openDatabase(this.idbName)
+      .pipe(take(1))
+      .subscribe(
+        success,
         (err) => error(err)
       );
   }
 
-  update(storeName: string, value: object, key: any) {
-    this.openDatabase(storeName)
+  update(key: number, value: object) {
+
+    const success = (_) => {
+      this.idb.delete(this.idbName, key);
+      this.idb.add(this.idbName, value, key);
+    };
+
+    this.openDatabase(this.idbName)
       .pipe(take(1))
-      .subscribe(
-        (_) => {
-          this.idb.delete(storeName, key);
-          this.idb.add(storeName, value, key);
-        });
+      .subscribe(success);
   }
 
-  delete(storeName: string, key: any) {
-    this.openDatabase(storeName)
+  delete(key: number) {
+    this.openDatabase(this.idbName)
       .pipe(take(1))
       .subscribe(
-        (_) => from(this.idb.delete(storeName, key))
+        (_) => from(this.idb.delete(this.idbName, key))
       );
   }
 }

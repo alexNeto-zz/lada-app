@@ -74,11 +74,14 @@ export class WeatherListComponent implements OnInit, OnDestroy {
   }
 
   buildRequest(source: Sourcelist): Observable<any> {
+    let location: string[] | number[] = [undefined, undefined];
+
     if (source.params === 'x:y') {
-      return this.location.findTodayWeather(source.source, this.candidate.location.x, this.candidate.location.y);
+      location = [this.candidate.location.x, this.candidate.location.y];
     } else {
-      return this.location.findTodayWeather(source.source, this.candidate.attributes.Region, this.candidate.attributes.City);
+      location = [this.candidate.attributes.Region, this.candidate.attributes.City];
     }
+    return this.location.findTodayWeather(source.source, location[0], location[1]);
   }
 
   voteRanker(card: Card) {
