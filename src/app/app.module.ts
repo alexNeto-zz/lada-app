@@ -14,7 +14,6 @@ import { WeatherCardComponent } from '@components/weather-card/weather-card.comp
 import { WeatherListComponent } from '@components/weather-list/weather-list.component';
 import { FontAwesomeLibraryModule } from '@modules/font-awesome-library.module';
 import { TemperaturePipe } from '@pipes/temperature/temperature.pipe';
-import * as Sentry from '@sentry/browser';
 import { SentryService } from '@services/sentry/sentry.service';
 import { SettingsService } from '@services/settings/settings.service';
 import { MainComponent } from '@views/main/main.component';
@@ -25,9 +24,6 @@ import { AppComponent } from './app.component';
 
 registerLocaleData(localePT, 'pt');
 
-Sentry.init({
-  dsn: environment.sentryDsn
-});
 
 
 @NgModule({
