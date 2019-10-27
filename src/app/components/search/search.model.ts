@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IndexeddbKey } from '@app/content/enums/indexed-db-key.enum';
 import { Candidate } from '@interfaces/candidate';
 import { LocationFound } from '@interfaces/location-found';
 import { ReverseCandidate } from '@interfaces/reverse-candidate';
@@ -6,12 +7,12 @@ import { Sourcelist } from '@interfaces/sourcelist';
 import { reverseCandidateToCandidate } from '@models/candidate-converter.model';
 import { ArcGisService } from '@services/arc-gis/arc-gis.service';
 import { GeoLocationService } from '@services/geo-location/geo-location.service';
+import { DbAccessService } from '@services/indexeddb/db-access.service';
 import { LocationFinderService } from '@services/location/location-finder.service';
 import { TitleService } from '@services/title/title.service';
 import { ToastService } from '@services/toast/toast.service';
 import { SelectedAutocompleteItem } from 'ng-auto-complete';
 import { take } from 'rxjs/operators';
-import { SearchDB } from './search-db.model';
 
 @Injectable({
     providedIn: 'root'
@@ -23,15 +24,17 @@ export class SearchBO {
     public ask: boolean;
     public placeholder: string;
     private candidate?: Candidate;
+    private key: number;
 
     constructor(
         private location: LocationFinderService,
         private arcGis: ArcGisService,
         private geoLocation: GeoLocationService,
-        private searchDB: SearchDB,
+        private dbAccess: DbAccessService,
         private toast: ToastService,
         private title: TitleService
     ) {
+        this.key = IndexeddbKey.address
         this.isLoading = false;
         this.isLoadingGPS = false;
         this.ask = false;
@@ -64,22 +67,23 @@ export class SearchBO {
 
     findByGeoLocation(data: ReverseCandidate) {
         this.setCandidate(reverseCandidateToCandidate(data));
-        this.searchDB.updateLocation(this.candidate);
+        this.dbAccess.update(this.candidate, this.key);
         this.findListOfSourceForLocation();
         this.isLoadingGPS = false;
     }
 
     onStoredCandidate() {
-        this.searchDB.getLocation(
-            (data: Candidate) => {
-                this.setCandidate(data);
-                this.findListOfSourceForLocation();
-            },
-            () => {
-                this.isLoadingGPS = false;
-                this.isLoading = false;
-            }
-        );
+        const success = (data: Candidate) => {
+            this.setCandidate(data);
+            this.findListOfSourceForLocation();
+        };
+
+        const error = () => {
+            this.isLoadingGPS = false;
+            this.isLoading = false;
+        };
+
+        this.dbAccess.retrieve(success, error, this.key);
     }
 
     findListOfSourceForLocation() {
@@ -112,7 +116,7 @@ export class SearchBO {
             .subscribe((data: LocationFound) => {
                 onSuccess(data);
                 this.candidate = data.candidates[0];
-                this.searchDB.updateLocation(this.candidate);
+                this.dbAccess.update(this.candidate, this.key);
             });
     }
 
